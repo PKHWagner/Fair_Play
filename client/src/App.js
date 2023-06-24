@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginReg from './views/LoginReg';
 import CreateGame from './views/CreateGame';
 import UpdatePlayer from './views/UpdatePlayer';
+import AddGameStats from './views/AddGameStats';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
           <Route path="/" element={<LoginReg />} />
           <Route path="/UpdatePlayer" element={<UpdatePlayer />} />
           <Route path="/CreateGame" element={<CreateGame />} />
-
+          <Route path="/GameStats" element={<AddGameStats />} />
         </Routes>
       </BrowserRouter>
     </div>

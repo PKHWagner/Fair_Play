@@ -11,8 +11,8 @@ const CreateGame = (props) => {
     const [game, setGame] = useState(props);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
-    
-    const newGame = async (game) => {    
+
+    const newGame = async (game) => {
         try{
             const res = await axios.post('http://localhost:8000/api/gigs/createGame', game)
                 console.log(res);
@@ -35,10 +35,10 @@ return (
         <h2 className="mx-auto mt-5">Create Pick Up Game:</h2>
         <div>
             {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-            <GameForm onSubmitProp={newGame} initialDate="" initialStreetAddress="" initialCity="" initialState=""  initialZipCode="" initialSetUpBy="" initialStartTime=""/>
+            <GameForm onSubmitProp={newGame} initialDate="" initialAddress="" initialCity="" initialState=""  initialZipCode="" initialSetUpTime="" initialStartTime=""/>
         </div>
     </div>
     )
-}   
+}
 
 export default CreateGame

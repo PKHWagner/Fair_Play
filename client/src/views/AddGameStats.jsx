@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom'
 import UpdatePlayerForm from '../components/UpdatePlayerForm' 
+import StatForm from '../components/StatForm'
 // import NavBar from '../components/NavBar'
 
-const UpdatePlayer = (props) => {
+const AddGameStats = (props) => {
     const [player, setPlayer] = useState(props);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
@@ -44,13 +45,13 @@ const UpdatePlayer = (props) => {
 return (
     <div>
         {/* <NavBar/> */}
-        <h2 className="mx-auto mt-5">Update Player:</h2>
+        <h2 className="mx-auto mt-5">Game Stats:</h2>
         <div>
-        {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-        <UpdatePlayerForm onSubmitProp={editPlayer} initialFirstName={player.firstName} initialLastName={player.lastName} initialAddress={player.address} initialCity={player.city} initialState={player.state} initialZipCode={player.zipCode} initialSport={player.sport} intialPosition={player.postion} initialSkillLevel={player.skillLevel} initialEmail={player.email}/>
+            {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
+            <StatForm onSubmitProp={editPlayer} initialMinutes={player.minutes} initialGoals={player.goals} initialAssists={player.assists} initialYellowCard={player.yellowCard} initialRedCard={player.redCard}/>  
         </div>
     </div>
     )
 }   
 
-export default UpdatePlayer
+export default AddGameStats

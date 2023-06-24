@@ -8,7 +8,7 @@ const GameForm = (props) => {
         city: initialCity,
         state: initialState,
         zipCode: initialZipCode,
-        setUpBy: initialSetUpTime,
+        setUpTime: initialSetUpTime,
         startTime: initialStartTime,
 
     })
