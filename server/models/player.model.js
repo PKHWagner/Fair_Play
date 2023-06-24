@@ -6,32 +6,31 @@ const PlayerSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: [true, 'First name is required!'],
-    minlength: [2, 'First name must be at least 2 characters long!']
+    minLength: [2, 'First name must be at least 2 characters long!']
   },
   lastName: {
     type: String,
     required: [true, 'Last name is required!'],
-    minlength: [2, 'Last name must be at least 2 characters long!']
+    minLength: [2, 'Last name must be at least 2 characters long!']
   },
   address: {
     type: String,
     required: [true, 'Address is required!'],
-    minlength: [2, 'Address must be at least 2 characters long!']
+    minLength: [2, 'Address must be at least 2 characters long!']
   },
   city: {
     type: String,
     required: [true, 'City is required!'],
-    minlength: [2, 'City must be at least 2 characters long!']
+    minLength: [2, 'City must be at least 2 characters long!']
   },
   state: {
     type: String,
     required: [true, 'State is required!'],
-    maxlength: [2, 'State cannot be over 2 characters!']
+    maxLength: [2, 'State cannot be over 2 characters!']
   },
   zipCode: {
     type: Number,
     required: [true, 'Zip Code is required!'],
-    maxlength: [5, 'Zip Code cannot be over 5 characters!']
   },
   sport:{
     type: String,
@@ -71,8 +70,38 @@ const PlayerSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Password is required!'],
-    minlength: [8, 'Password must be at least 8 characters long!']
+    minLength: [8, 'Password must be at least 8 characters long!']
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false
+  },
+  minutes: {
+    type: Number,
+    min: [0, "Minutes cannot be a negative number!"]
+    
+  },
+  goals: {
+    type: Number,
+    min: [0, "Goals cannot be a negative number!"]
+  },
+  assists: {
+    type: Number,
+    min: [0, "Assists cannot be a negative number!"]
+  },
+  yellowCards: {
+    type: Number,
+    enum: [
+      0,
+      1,
+      2
+    ]
+  },
+  redCard: {
+    type: Boolean,
+    default: false
   }
+
 }, {timestamps: true});
 
 PlayerSchema.virtual('confirmPassword')

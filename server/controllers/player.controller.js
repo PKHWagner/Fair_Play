@@ -54,6 +54,30 @@ module.exports = {
     }
   },
 
+  getAll: (req, res) => {
+    Player.find({})
+    .then(allPlayers => res.json(allPlayers))
+    .catch(err => res.status(400).json({msg: "COULD NOT GET ALL--->",err}));
+  },
+
+  getOne: (req, res) => {
+    Player.findById(req.params.id)
+    .then(onePlayer => res.json(onePlayer))
+    .catch(err => res.status(400).json({msg: "COULD NOT GET ONE--->", err}));
+  },
+
+  update: (req, res) => {
+    Player.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
+    .then(updatePlayer => res.status(202).json(updatePlayer))
+    .catch(err => res.status(400).json({msg: "COULD NOT UPDATE--->", err}));
+  },
+
+  delete: (req, res) => {
+    Player.findByIdAndDelete(req.params.id)
+    .then(deletePlayer => res.status(202).json(deletePlayer))
+    .catch(err => res.status(400).json({msg: "COULD NOT DELETE--->", err}));
+  },
+
   logout: (req, res) => {
     res.clearCookie('playerToken');
     res.sendStatus(200);
