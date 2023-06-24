@@ -18,6 +18,9 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.3.0",
+    "react-redux": "^8.1.1",
+    "react-redux-toolkit": "^0.0.1-alpha.2",
+    "react-toastify": "^9.1.3",
     "validator": "^13.9.0"
   }
 }
