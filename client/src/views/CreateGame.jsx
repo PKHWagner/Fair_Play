@@ -14,11 +14,11 @@ const CreateGame = (props) => {
 
     const newGame = async (game) => {
         try{
-            const res = await axios.post('http://localhost:8000/api/gigs/createGame', game)
+            const res = await axios.post('http://localhost:8000/api/games/create', game)
                 console.log(res);
                 setGame(res.data)
                 setAllGames([...allGames, res.data]);
-                navigate('/')
+                navigate('/AdminDashboard')
             } catch (err) {
                 console.log(err)
                 const errorResponse = err.response.data.message;

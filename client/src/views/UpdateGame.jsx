@@ -14,7 +14,7 @@ const UpdateGame = (props) => {
 
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/players/oneGame/${id}`)
+        axios.get(`http://localhost:8000/api/game/${id}`)
         .then((res)=>{
             console.log(res.data.game);
             setGame(res.data.game);
@@ -26,11 +26,11 @@ const UpdateGame = (props) => {
         }, [])
 
     const editGame = game => {
-        axios.put(`http://localhost:8000/api/players/editGame/${id}`, 
+        axios.patch(`http://localhost:8000/api/game/${id}`, 
         game)
         .then(res=>{
             console.log(res);
-            navigate(`/`)
+            navigate(`/AdminDashboard`)
         })
         .catch(err=>{
             console.log(err.response.data.errors);

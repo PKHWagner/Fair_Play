@@ -26,7 +26,7 @@ const LoginForm = (props) => {
             toast.error(message)
         }
         if (isSuccess || player) {
-            navigate('/MusicianDashboard')
+            navigate('/PlayerDashboard')
         }
 
         dispatch (reset())

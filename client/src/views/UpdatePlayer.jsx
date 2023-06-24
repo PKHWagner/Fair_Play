@@ -13,7 +13,7 @@ const UpdatePlayer = (props) => {
 
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/players/onePlayer/${id}`)
+        axios.get(`http://localhost:8000/api/players/${id}`)
         .then((res)=>{
             console.log(res.data.player);
             setPlayer(res.data.player);
@@ -25,7 +25,7 @@ const UpdatePlayer = (props) => {
         }, [])
 
     const editPlayer = player => {
-        axios.put(`http://localhost:8000/api/players/editPlayer/${id}`, 
+        axios.patch(`http://localhost:8000/api/players/${id}`, 
         player)
         .then(res=>{
             console.log(res);
