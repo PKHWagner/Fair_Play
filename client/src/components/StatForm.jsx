@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-const StatsForm = (props) => {
+const StatForm = (props) => {
     const {initialMinutes, initialGoals, initialAssists, initialYellowCard, initialRedCard, onSubmitProp} = props;
-    const [stats, setStats] = useState({
+    const [gameStats, setGameStats] = useState({
         minutes: initialMinutes,
         goals: initialGoals,
         assists: initialAssists,
@@ -12,16 +12,16 @@ const StatsForm = (props) => {
     const [errors, setErrors] = useState({})
 
     const changeHandler = (e) => {
-        setGameData((prevStats) => ({
+        setGameStats((prevStats) => ({
             ...prevStats,
             [e.target.name]: e.target.value
         }))
-        console.log(setGameData);
+        console.log(gameStats);
     }
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        onSubmitProp(stats)
+        onSubmitProp(gameStats)
     }
     
 
@@ -30,7 +30,7 @@ const StatsForm = (props) => {
             <form className='mx-auto' onSubmit={onSubmitHandler}>
                 <div className='form-group m-3'>
                     <label htmlFor='minutes'>Minutes</label>
-                    <input type="minutes" name="minutes" id="minutes" className="form-control" value={stats.minutes} onChange = {changeHandler}/>
+                    <input type="minutes" name="minutes" id="minutes" className="form-control" value={gameStats.minutes} onChange = {changeHandler}/>
                     {
                         errors.minutes?
                         <p>{errors.minutes.message}</p>:
@@ -39,7 +39,7 @@ const StatsForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='address'>Goals</label>
-                    <input type="goals" name="goals" id="goals" className="form-control" value={stats.goals} onChange = {changeHandler}/>
+                    <input type="goals" name="goals" id="goals" className="form-control" value={gameStats.goals} onChange = {changeHandler}/>
                     {
                         errors.goals?
                         <p>{errors.goals.message}</p>:
@@ -48,7 +48,7 @@ const StatsForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='assists'>Assists</label>
-                    <input type="text" name="assists" id="assists" className="form-control" value={stats.assists} onChange = {changeHandler}/>
+                    <input type="text" name="assists" id="assists" className="form-control" value={gameStats.assists} onChange = {changeHandler}/>
                     {
                         errors.assists?
                         <p>{errors.assists.message}</p>:
@@ -57,8 +57,7 @@ const StatsForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='yellowCard'>Yellow Card</label>
-                    <input type="radio" className="form-radio-input" name="yellowCard" id="yes" onChange = {changeHandler}/>
-                    <input type="radio" className="form-radio-input" name="yellowCard" id="no" onChange = {changeHandler}/>
+                    <input type="number" min="1" max="2" name="yellowCard" id="yellowCard" className="form-radio-input"  onChange = {changeHandler}/>
                     {
                         errors.yellowCard?
                         <p>{errors.yellowCard.message}</p>:
@@ -66,8 +65,9 @@ const StatsForm = (props) => {
                     }
                 </div>
                 <div className='form-group m-3'>
-                    <label htmlFor='redCard'>Red Card</label>
+                    <label htmlFor='yes'>Yes</label>
                     <input type="radio" className="form-radio-input" name="RedCard" id="yes" onChange = {changeHandler}/>
+                    <label htmlFor='no'>No</label>
                     <input type="radio" className="form-radio-input" name="RedCard" id="no" onChange = {changeHandler}/>                    {
                         errors.redCard?
                         <p>{errors.redCard.message}</p>:
@@ -79,4 +79,4 @@ const StatsForm = (props) => {
         </div>
     )
 }
-export default GameForm
+export default StatForm
