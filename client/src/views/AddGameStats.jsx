@@ -3,27 +3,21 @@ import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom'
 import UpdatePlayerForm from '../components/UpdatePlayerForm' 
 import StatForm from '../components/StatForm'
-// import NavBar from '../components/NavBar'
+import PlayerNavbar from '../components/PlayerNavbar'
+import { useSelector } from 'react-redux';
+
 
 const AddGameStats = (props) => {
-    const [player, setPlayer] = useState(props);
+    const [player, setPlayer] = useState({});
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
     const{id} = useParams();
+
+    const loggedInPlayer = useSelector((state) => state.auth.player);
+
+    console.log(loggedInPlayer)
+
     // const [loaded, setLoaded] = useState(false);
-
-
-    useEffect(()=>{
-        axios.get(`http://localhost:8000/api/players/${id}`)
-        .then((res)=>{
-            console.log(res.data.player);
-            setPlayer(res.data.player);
-            // setLoaded(true);
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-        }, [])
 
     const editPlayer = player => {
         axios.patch(`http://localhost:8000/api/players/${id}`, 
@@ -44,11 +38,11 @@ const AddGameStats = (props) => {
 
 return (
     <div>
-        {/* <NavBar/> */}
+        <PlayerNavbar player={loggedInPlayer.player}/>
         <h2 className="mx-auto mt-5">Game Stats:</h2>
         <div>
             {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-            <StatForm onSubmitProp={editPlayer} initialMinutes={player.minutes} initialGoals={player.goals} initialAssists={player.assists} initialYellowCard={player.yellowCard} initialRedCard={player.redCard}/>  
+            <StatForm onSubmitProp={editPlayer} initialMinutes={player.minutes} initialGoals={player.goals} initialAssists={player.assists} initialYellowCards={player.yellowCards} initialRedCard={player.redCard}/>  
         </div>
     </div>
     )

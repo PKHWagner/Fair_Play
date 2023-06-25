@@ -1,10 +1,10 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import authService from './authService';
 
-const player = JSON.parse(localStorage.getItem('musician'));
+const player = JSON.parse(localStorage.getItem('player'));
 
 const initialState = {
-    musician: player? player : null,
+    player: player? player : null,
     isError: false,
     isSuccess: false,
     isLoading: false,
