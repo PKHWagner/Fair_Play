@@ -40,11 +40,11 @@ const LoginForm = (props) => {
     }
 
     const onSubmitHandler = (e) => {
-        e.preventDefault();
-        
+        e.preventDefault();        
         const loginInfo = { email, password }
         dispatch(login(loginInfo))
         console.log(loginInfo)
+        navigate('/PlayerDashboard')
         // onSubmitProp(loginInfo)
     }
     if (isLoading) {

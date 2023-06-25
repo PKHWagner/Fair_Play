@@ -14,7 +14,7 @@ const UpdateGame = (props) => {
 
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/game/${id}`)
+        axios.get(`http://localhost:8000/api/games/${id}`)
         .then((res)=>{
             console.log(res.data.game);
             setGame(res.data.game);
@@ -26,7 +26,7 @@ const UpdateGame = (props) => {
         }, [])
 
     const editGame = game => {
-        axios.patch(`http://localhost:8000/api/game/${id}`, 
+        axios.patch(`http://localhost:8000/api/games/${id}`, 
         game)
         .then(res=>{
             console.log(res);
@@ -45,7 +45,7 @@ const UpdateGame = (props) => {
 return (
     <div>
         {/* <NavBar/> */}
-        <h2 className="mx-auto mt-5">Update Player:</h2>
+        <h2 className="mx-auto mt-5">Update Game:</h2>
         <div>
         {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
         <GameForm onSubmitProp={editGame} initialDate={game.date} initialAddress={game.address} initialCity={game.city} initialState={game.state}  initialZipCode={game.zipCode} initialSetUpTime={game.setUpTime} initialStartTime={game.startTime}/>
@@ -54,4 +54,4 @@ return (
     )
 }   
 
-export default UpdatePlayer
+export default UpdateGame

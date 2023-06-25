@@ -24,7 +24,7 @@ const LoginReg = (props) => {
                 </div> */}
                 <div className='col me-5'>
                     <h2 className="offset-md mx-auto">Register:</h2>
-                    <RegisterForm initialFirstName="" initialLastName="" initialEmail="" initialInstrument="" initialPassword="" initialConfirmPassword=""/>
+                    <RegisterForm initialFirstName="" initialLastName="" initialEmail="" initialInstrument="" initialPassword="" initialConfirmPassword="" initialMinutes={0} initialGoals={0} initialAssists={0} initialYellowCards={0} initialRedCard={0}/>
                 </div>
             </div>
         </div>

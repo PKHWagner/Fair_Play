@@ -7,7 +7,26 @@ import { reset } from '../slices/authSlice';
 
 
 const RegisterForm = (props) => {
-    const {initialFirstName, initialLastName, initialAddress, initialCity, initialState, initialZipCode, initialSport, intialPosition, initialSkillLevel, initialEmail, initialPassword , initialConfirmPassword} = props;
+    const {
+        initialFirstName,
+        initialLastName, 
+        initialAddress, 
+        initialCity, 
+        initialState, 
+        initialZipCode, 
+        initialSport, 
+        intialPosition, 
+        initialSkillLevel, 
+        initialEmail, 
+        initialPassword , 
+        initialConfirmPassword,
+        initialMinutes,
+        initialGoals,
+        initialAssists,
+        initialYellowCards,
+        initialRedCard
+    } = props;
+
     const [playerData, setPlayerData] = useState({
         firstName: initialFirstName,
         lastName: initialLastName,
@@ -20,7 +39,12 @@ const RegisterForm = (props) => {
         skillLevel: initialSkillLevel,
         email: initialEmail,
         password: initialPassword,
-        confirmPassword: initialConfirmPassword
+        confirmPassword: initialConfirmPassword,
+        minutes: initialMinutes,
+        goals: initialGoals,
+        assists: initialAssists,
+        yellowCards: initialYellowCards,
+        redCard: initialRedCard,
     })
 
     const navigate = useNavigate();

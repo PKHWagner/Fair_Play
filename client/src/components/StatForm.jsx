@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
 const StatForm = (props) => {
-    const {initialMinutes, initialGoals, initialAssists, initialYellowCard, initialRedCard, onSubmitProp} = props;
+    const {initialMinutes, initialGoals, initialAssists, initialYellowCards, initialRedCard, onSubmitProp} = props;
     const [gameStats, setGameStats] = useState({
         minutes: initialMinutes,
         goals: initialGoals,
         assists: initialAssists,
-        yellowCard: initialYellowCard,
+        yellowCards: initialYellowCards,
         redCard: initialRedCard,
     })
     const [errors, setErrors] = useState({})
@@ -57,7 +57,7 @@ const StatForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='yellowCard'>Yellow Card</label>
-                    <input type="number" min="1" max="2" name="yellowCard" id="yellowCard" className="form-radio-input"  onChange = {changeHandler}/>
+                    <input type="number" min="0" max="2" name="yellowCard" id="yellowCard" className="form-radio-input"  onChange = {changeHandler}/>
                     {
                         errors.yellowCard?
                         <p>{errors.yellowCard.message}</p>:

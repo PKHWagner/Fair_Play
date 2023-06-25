@@ -4,6 +4,8 @@ import LoginReg from './views/LoginReg';
 import CreateGame from './views/CreateGame';
 import UpdatePlayer from './views/UpdatePlayer';
 import AddGameStats from './views/AddGameStats';
+import PlayerDashboard from './views/PlayerDashboard';
+import UpdateGame from './views/UpdateGame';
 
 function App() {
   return (
@@ -11,9 +13,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginReg />} />
-          <Route path="/UpdatePlayer" element={<UpdatePlayer />} />
+          <Route path="/UpdatePlayer/:id" element={<UpdatePlayer />} />
           <Route path="/CreateGame" element={<CreateGame />} />
+          <Route path="/UpdateGame" element={<UpdateGame />} />
           <Route path="/GameStats" element={<AddGameStats />} />
+          <Route path="/PlayerDashboard" element={<PlayerDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
