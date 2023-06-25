@@ -11,7 +11,7 @@ app.use(cookieParser());
 require('dotenv').config();
 require('./config/mongoose.config');
 require('./routes/player.routes')(app);
-// require('')(app);
+require('./routes/game.routes')(app);
 
 const port = 8000;
 
