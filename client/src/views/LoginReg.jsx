@@ -8,7 +8,7 @@ const LoginReg = (props) => {
     const [allPlayers, setAllPlayers] = useState([]);
     const [player, setPlayer] = useState(props);
     const [errors, setErrors] = useState([]);
-
+        
     return (
         <div>
             {/* <NavBar/> */}

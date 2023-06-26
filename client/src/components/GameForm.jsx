@@ -27,7 +27,7 @@ const GameForm = (props) => {
         e.preventDefault();
         onSubmitProp(gameData)
     }
-    
+             
 
     return (
         <div className="col-4 mx-auto m-5">

@@ -50,7 +50,7 @@ const AllGamesList = (props) => {
     //         console.log(err);
     //     })
     // }
-
+       
     return (
         <div className='game-list-container'>
           <table className='game-list-table'>

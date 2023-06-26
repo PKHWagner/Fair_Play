@@ -294,6 +294,6 @@ return (
     </div>
   );
   
-  
+          
 }
 export default RegisterForm

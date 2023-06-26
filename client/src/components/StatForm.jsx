@@ -25,7 +25,7 @@ const StatForm = (props) => {
         onSubmitProp(gameStats)
     }
     
-
+          
     return (
         <div className="stat-form-container">
           <form className="stat-form" onSubmit={onSubmitHandler}>
