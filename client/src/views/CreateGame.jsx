@@ -14,7 +14,7 @@ const CreateGame = (props) => {
 
     const newGame = async (game) => {
         try{
-            const res = await axios.post('http://localhost:8000/api/games/create', game)
+            const res = await axios.post('http://localhost:8000/api/games', game)
                 console.log(res);
                 setGame(res.data)
                 setAllGames([...allGames, res.data]);
@@ -35,7 +35,7 @@ return (
         <h2 className="mx-auto mt-5">Create Pick Up Game:</h2>
         <div>
             {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-            <GameForm onSubmitProp={newGame} initialDate="" initialAddress="" initialCity="" initialState=""  initialZipCode="" initialSetUpTime="" initialStartTime=""/>
+            <GameForm onSubmitProp={newGame} initialGameDate="" initialAddress="" initialCity="" initialState=""  initialZipCode="" initialSetupTime="" initialKickOffTime=""/>
         </div>
     </div>
     )

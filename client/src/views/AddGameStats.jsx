@@ -11,11 +11,12 @@ const AddGameStats = (props) => {
     const [player, setPlayer] = useState({});
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
-    const{id} = useParams();
-
     const loggedInPlayer = useSelector((state) => state.auth.player);
 
-    console.log(loggedInPlayer)
+    const id = loggedInPlayer.player._id;
+
+
+    console.log(id);
 
     // const [loaded, setLoaded] = useState(false);
 
@@ -24,7 +25,7 @@ const AddGameStats = (props) => {
         player)
         .then(res=>{
             console.log(res);
-            navigate(`/PlayorDashboard`)
+            navigate(`/PlayerDashboard`)
         })
         .catch(err=>{
             console.log(err.response.data.errors);

@@ -26,11 +26,14 @@ const PlayerSchema = new mongoose.Schema({
   state: {
     type: String,
     required: [true, 'State is required!'],
+    minLength: [2, 'State must be at least 2 characters long!'],
     maxLength: [2, 'State cannot be over 2 characters!']
   },
   zipCode: {
-    type: Number,
+    type: String,
     required: [true, 'Zip Code is required!'],
+    minLength: [5, 'Zip Code must be at least 5 characters long!'],
+    maxLength: [5, 'Zip Code cannot be over 5 characters!']
   },
   sport:{
     type: String,

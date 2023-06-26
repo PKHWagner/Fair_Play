@@ -9,11 +9,11 @@ const AllGamesList = (props) => {
     const [allGames, setAllGames] = useState([])
     const [game, setGame] = useState({})
     const navigate = useNavigate();
-        const loggedInPlayer = useSelector((state) => state.auth.player);
-        const player = loggedInPlayer.player;
+    const loggedInPlayer = useSelector((state) => state.auth.player);
+    const player = loggedInPlayer.player;
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/games/allgames')
+        axios.get('http://localhost:8000/api/games')
         .then((res)=>{
             console.log(res.data);
             setAllGames(res.data);
@@ -21,6 +21,36 @@ const AllGamesList = (props) => {
         .catch((err)=>{
             console.log(err);
         })}, [])
+
+    const formatTime = (time) => {
+        if (time) {
+            const [hours, minutes] = time.split(":");
+            const formattedTime = new Date();
+            formattedTime.setHours(hours);
+            formattedTime.setMinutes(minutes);
+
+            return formattedTime.toLocaleString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+            });
+        }
+        return "";
+        };
+    
+        const formatDate = (date) => {
+            if (date) {
+                const formattedDate = new Date(date);
+                return formattedDate.toLocaleString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                });
+            }
+            return "";
+        };
+    
+
         
     const commitHandler = (id) => {
         Promise.all([

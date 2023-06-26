@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react'
 import './GameForm.css';
 
 const GameForm = (props) => {
-    const {initialDate, initialAddress, initialCity, initialState , initialZipCode, initialSetUpTime, initialStartTime, onSubmitProp} = props;
+    const {initialGameDate, initialAddress, initialCity, initialState , initialZipCode, initialSetupTime, initialKickOffTime, onSubmitProp} = props;
     const [gameData, setGameData] = useState({
-        date: initialDate,
-        streetAddress: initialAddress,
+        gameDate: initialGameDate,
+        address: initialAddress,
         city: initialCity,
         state: initialState,
         zipCode: initialZipCode,
-        setUpTime: initialSetUpTime,
-        startTime: initialStartTime,
+        setupTime: initialSetupTime,
+        kickoffTime: initialKickOffTime
 
     })
     const [errors, setErrors] = useState({})
@@ -20,7 +20,7 @@ const GameForm = (props) => {
             ...prevGame,
             [e.target.name]: e.target.value
         }))
-        console.log(setGameData);
+        console.log(gameData);
     }
 
     const onSubmitHandler = (e) => {
