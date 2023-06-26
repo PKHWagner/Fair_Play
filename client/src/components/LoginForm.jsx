@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { login } from '../slices/authSlice';
 import { reset } from '../slices/authSlice';
+import './LoginForm.css';
 
 const LoginForm = (props) => {
     const {loginEmail, loginPassword} = props;
@@ -52,29 +53,30 @@ const LoginForm = (props) => {
     }
 
     return (
-        <div className="bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
-            <form className='mx-auto' onSubmit={onSubmitHandler}>
-                <div className='form-group m-3'>
-                    <label htmlFor='email'>Email:</label>
-                    <input type="text" name="email" id="email" className="form-control" onChange = {logChangeHandler}/>
-                    {
-                        errors.email?
-                        <p>{errors.email.message}</p>:
-                        null
-                    }
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='password'>Password:</label>
-                    <input type="password" name="password" id="password" className="form-control" onChange = {logChangeHandler}/>
-                    {
-                        errors.password?
-                        <p>{errors.password.message}</p>:
-                        null
-                    }
-                </div>
-                
-                <button input type="submit" className='btn btn-warning'>Submit</button>
-            </form>
+        <div className="login-section-bg login-section mx-auto p-3 login-section-border login-section-border-dark login-section-rounded login-section-margin">
+          <form className="login-section mx-auto" onSubmit={onSubmitHandler}>
+            <h1 className='login-space'> Login:</h1>
+            <div className="login-form-group m-3">
+              <label htmlFor="email" className="login-label"> Email:</label>
+              <input type="text" name="email" id="email" className="login-form-control" onChange={logChangeHandler}/>
+                {
+                    errors.email ? (
+                    <p className="login-error-message">{errors.email.message}</p>) : 
+                    null
+                }
+            </div>
+            <div className="login-form-group m-3">
+              <label htmlFor="password" className="login-label">Password:</label>
+              <input type="password" name="password" id="password" className="login-form-control" onChange={logChangeHandler}/>
+                {
+                    errors.password ? (
+                    <p className="login-error-message">{errors.password.message}</p>) : 
+                    null
+                }
+            </div>
+    
+            <button type="submit" className="btn btn-warning login-submit-button login-submit-button-animation">Login</button>
+          </form>
         </div>
     )
 }
