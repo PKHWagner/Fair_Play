@@ -65,7 +65,7 @@ const LoginForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='password'>Password:</label>
-                    <input type="password" name="password" id="password" className="form-control" onChange = {logChangeHandler}/>
+                    <input type="password" name="password" id="password" className="form-control" onChange = {logChangeHandler} autoComplete='current-password'/>
                     {
                         errors.password?
                         <p>{errors.password.message}</p>:

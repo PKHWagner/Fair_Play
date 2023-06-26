@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom'
-import UpdatePlayerForm from '../components/UpdatePlayerForm' 
 import GameForm from '../components/GameForm'
 // import NavBar from '../components/NavBar'
 
@@ -16,8 +15,7 @@ const UpdateGame = (props) => {
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/games/${id}`)
         .then((res)=>{
-            console.log(res.data.game);
-            setGame(res.data.game);
+            setGame(res.data);
             setLoaded(true);
         })
         .catch((err)=>{
@@ -30,7 +28,7 @@ const UpdateGame = (props) => {
         game)
         .then(res=>{
             console.log(res);
-            navigate(`/AdminDashboard`)
+            navigate(`/PlayerDashboard`)
         })
         .catch(err=>{
             console.log(err.response.data.errors);
@@ -48,7 +46,9 @@ return (
         <h2 className="mx-auto mt-5">Update Game:</h2>
         <div>
         {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-        <GameForm onSubmitProp={editGame} initialDate={game.date} initialAddress={game.address} initialCity={game.city} initialState={game.state}  initialZipCode={game.zipCode} initialSetUpTime={game.setUpTime} initialStartTime={game.startTime}/>
+        {
+        loaded && <GameForm onSubmitProp={editGame} initialDate={game.gameDate} initialAddress={game.address} initialCity={game.city} initialState={game.state}  initialZipCode={game.zipCode} initialSetupTime={game.setUpTime} initialKickOffTime={game.kickOffTime}/>
+        }
         </div>
     </div>
     )

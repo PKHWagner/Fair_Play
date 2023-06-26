@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 
 const GameForm = (props) => {
-    const {initialDate, initialAddress, initialCity, initialState , initialZipCode, initialSetUpTime, initialStartTime, onSubmitProp} = props;
+    const {initialGameDate, initialAddress, initialCity, initialState , initialZipCode, initialSetupTime, initialKickOffTime, onSubmitProp} = props;
     const [gameData, setGameData] = useState({
-        date: initialDate,
-        streetAddress: initialAddress,
+        gameDate: initialGameDate,
+        address: initialAddress,
         city: initialCity,
         state: initialState,
         zipCode: initialZipCode,
-        setUpTime: initialSetUpTime,
-        startTime: initialStartTime,
+        setupTime: initialSetupTime,
+        kickoffTime: initialKickOffTime
 
     })
     const [errors, setErrors] = useState({})
@@ -19,7 +19,7 @@ const GameForm = (props) => {
             ...prevGame,
             [e.target.name]: e.target.value
         }))
-        console.log(setGameData);
+        console.log(gameData);
     }
 
     const onSubmitHandler = (e) => {
@@ -32,17 +32,17 @@ const GameForm = (props) => {
         <div className="col-4 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
             <form className='mx-auto' onSubmit={onSubmitHandler}>
                 <div className='form-group m-3'>
-                    <label htmlFor='date'>Date:</label>
-                    <input type="date" name="date" id="date" className="form-control" value={gameData.date} onChange = {changeHandler}/>
+                    <label htmlFor='gameDate'>Date:</label>
+                    <input type="date" name="gameDate" id="gameDate" className="form-control" value={gameData.gameDate} onChange = {changeHandler}/>
                     {
                         errors.date?
-                        <p>{errors.date.message}</p>:
+                        <p>{errors.gameDate.message}</p>:
                         null
                     }
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='address'>Address:</label>
-                    <input type="text" name="saddress" id="address" className="form-control" value={gameData.address} onChange = {changeHandler}/>
+                    <input type="text" name="address" id="address" className="form-control" value={gameData.address} onChange = {changeHandler}/>
                     {
                         errors.address?
                         <p>{errors.address.message}</p>:
@@ -60,7 +60,8 @@ const GameForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='state'>State:</label>
-                    <select name="state" id="state" className="form-control" value={gameData.state} onChange = {changeHandler}>
+                    <select name="state" id="state" className="form-control" onChange = {changeHandler}>
+                        <option value="null" selected disabled>Select State...</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -129,20 +130,20 @@ const GameForm = (props) => {
                     }
                 </div>
                 <div className='form-group m-3'>
-                    <label htmlFor='setUpBy'>Set Up By:</label>
-                    <input type="time" name="setUpBy" id="setUpBy" className="form-control" value={gameData.setUpBy} onChange = {changeHandler}/>
+                    <label htmlFor='setupTime'>Set Up By:</label>
+                    <input type="time" name="setupTime" id="setupTime" className="form-control" value={gameData.setupTime} onChange = {changeHandler}/>
                     {
                         errors.setUpBy?
-                        <p>{errors.setUpBy.message}</p>:
+                        <p>{errors.setupTime.message}</p>:
                         null
                     }
                 </div>
                 <div className='form-group m-3'>
-                    <label htmlFor='startTime'>Start Time:</label>
-                    <input type="time" name="startTime" id="startTime" className="form-control" value={gameData.startTime} onChange = {changeHandler}/>
+                    <label htmlFor='kickOffTime'>Kickoff Time:</label>
+                    <input type="time" name="kickOffTime" id="kickOffTime" className="form-control" value={gameData.kickOffTime} onChange = {changeHandler}/>
                     {
                         errors.startTime?
-                        <p>{errors.startTime.message}</p>:
+                        <p>{errors.kickOffTime.message}</p>:
                         null
                     }
                 </div>

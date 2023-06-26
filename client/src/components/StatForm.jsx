@@ -56,7 +56,7 @@ const StatForm = (props) => {
                     }
                 </div>
                 <div className='form-group m-3'>
-                    <label htmlFor='yellowCard'>Yellow Card</label>
+                    <label htmlFor='yellowCard' className='me-3'>Yellow Card</label>
                     <input type="number" min="0" max="2" name="yellowCard" id="yellowCard" className="form-radio-input"  onChange = {changeHandler}/>
                     {
                         errors.yellowCard?
@@ -64,7 +64,8 @@ const StatForm = (props) => {
                         null
                     }
                 </div>
-                <div className='form-group m-3'>
+                <div className='form-group m-3 d-flex justify-content-around'>
+                    <p>Red Card</p>
                     <label htmlFor='yes'>Yes</label>
                     <input type="radio" className="form-radio-input" name="RedCard" id="yes" onChange = {changeHandler}/>
                     <label htmlFor='no'>No</label>

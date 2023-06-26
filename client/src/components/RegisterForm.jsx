@@ -96,7 +96,7 @@ const RegisterForm = (props) => {
             <form className='mx-auto' onSubmit={onSubmitHandler}>
                 <div className='form-group m-3'>
                     <label htmlFor='firstName'>First Name:</label>
-                    <input type="text" name="firstName" id="firstName" className="form-control" value={playerData.firstName} onChange = {changeHandler}/>
+                    <input type="text" name="firstName" id="firstName" className="form-control" onChange = {changeHandler}/>
                     {
                         errors.firstName?
                         <p>{errors.firstName.message}</p>:
@@ -105,7 +105,7 @@ const RegisterForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='lastName'>Last Name:</label>
-                    <input type="text" name="lastName" id="lastName" className="form-control" value={playerData.lastName} onChange = {changeHandler}/>
+                    <input type="text" name="lastName" id="lastName" className="form-control" onChange = {changeHandler}/>
                     {
                         errors.lastName?
                         <p>{errors.lastName.message}</p>:
@@ -114,7 +114,7 @@ const RegisterForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='address'>Address:</label>
-                    <input type="text" name="address" id="address" className="form-control" value={playerData.address} onChange = {changeHandler}/>
+                    <input type="text" name="address" id="address" className="form-control" onChange = {changeHandler}/>
                     {
                         errors.streetAddress?
                         <p>{errors.streetAddress.message}</p>:
@@ -123,7 +123,7 @@ const RegisterForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='city'>City:</label>
-                    <input type="text" name="city" id="city" className="form-control" value={playerData.city} onChange = {changeHandler}/>
+                    <input type="text" name="city" id="city" className="form-control" onChange = {changeHandler}/>
                     {
                         errors.city?
                         <p>{errors.city.message}</p>:
@@ -132,7 +132,8 @@ const RegisterForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='state'>State:</label>
-                    <select name="state" id="state" className="form-control" value={playerData.state} onChange = {changeHandler}>
+                    <select name="state" id="state" className="form-control" onChange = {changeHandler}>
+                        <option value="null" selected disabled>Select State...</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -193,7 +194,7 @@ const RegisterForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='zipCode'>Zip Code:</label>
-                    <input type="text" name="zipCode" id="zipCode" className="form-control" value={playerData.zipCode} onChange = {changeHandler}/>
+                    <input type="text" name="zipCode" id="zipCode" className="form-control" onChange = {changeHandler}/>
                     {
                         errors.zipCode?
                         <p>{errors.zipCode.message}</p>:
@@ -202,7 +203,8 @@ const RegisterForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='sport'>Sport:</label>
-                    <select name="sport" id="sport" className="form-control" value={playerData.sport} onChange = {changeHandler}>
+                    <select name="sport" id="sport" className="form-control" onChange = {changeHandler}>
+                        <option value="null" selected disabled>Select your sport...</option>
                         <option value="Soccer">Soccer</option>
                         <option value="Basketball">Basketball</option>
                         <option value="Football">Football</option>
@@ -217,7 +219,8 @@ const RegisterForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='position'>Postion:</label>
-                    <select name="position" id="position" className="form-control" value={playerData.position} onChange = {changeHandler}>
+                    <select name="position" id="position" className="form-control" onChange = {changeHandler}>
+                        <option value="null" selected disabled>Select your position...</option>
                         <option value="Goalkeeper">Goalkeeper</option>
                         <option value="Full-back">Full-back</option>
                         <option value="Center-back">Center-back</option>
@@ -236,7 +239,8 @@ const RegisterForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='skillLevel'>Skill Level:</label>
-                    <select name="skillLevel" id="skillLevel" className="form-control" value={playerData.skillLevel} onChange = {changeHandler}>
+                    <select name="skillLevel" id="skillLevel" className="form-control" onChange = {changeHandler}>
+                        <option value="null" selected disabled>Select your skill level...</option>
                         <option value="1">Beginner</option>
                         <option value="2">Intermediate</option>
                         <option value="3">Advanced</option>
@@ -250,7 +254,7 @@ const RegisterForm = (props) => {
                 </div>
                 <div className='form-group m-3'>
                     <label htmlFor='email'>Email:</label>
-                    <input type="text" name="email" id="email" className="form-control" value={playerData.email} onChange = {changeHandler}/>
+                    <input type="text" name="email" id="regEmail" className="form-control" onChange = {changeHandler}/>
                     {
                         errors.email?
                         <p>{errors.email.message}</p>:
@@ -258,8 +262,8 @@ const RegisterForm = (props) => {
                     }
                 </div>
                 <div className='form-group m-3'>
-                    <label htmlFor='password'>Password:</label>
-                    <input type="password" name="password" id="password" className="form-control" value={playerData.password} onChange = {changeHandler}/>
+                    <label htmlFor='regPassword'>Password:</label>
+                    <input type="password" name="password" id="regPassword" className="form-control" onChange = {changeHandler} autoComplete='new-password'/>
                     {
                         errors.password?
                         <p>{errors.password.message}</p>:
@@ -267,8 +271,8 @@ const RegisterForm = (props) => {
                     }
                 </div>
                 <div className='form-group m-3'>
-                    <label htmlFor='confirmPassword'>Confirm Password:</label>
-                    <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" value={playerData.confirmPassword} onChange = {changeHandler}/>
+                    <label htmlFor='regConfirmPassword'>Confirm Password:</label>
+                    <input type="password" name="confirmPassword" id="regConfirmPassword" className="form-control" onChange = {changeHandler} autoComplete='new-password'/>
                     {
                         errors.confirmPassword?
                         <p>{errors.confirmPassword.message}</p>:

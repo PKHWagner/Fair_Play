@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom'
 import UpdatePlayerForm from '../components/UpdatePlayerForm' 
-// import NavBar from '../components/NavBar'
 
 const UpdatePlayer = (props) => {
     const [player, setPlayer] = useState(props);
@@ -15,8 +14,7 @@ const UpdatePlayer = (props) => {
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/players/${id}`)
         .then((res)=>{
-            console.log(res.data.player);
-            setPlayer(res.data.player);
+            setPlayer(res.data);    
             setLoaded(true);
         })
         .catch((err)=>{
@@ -29,7 +27,7 @@ const UpdatePlayer = (props) => {
         player)
         .then(res=>{
             console.log(res);
-            navigate(`/`)
+            navigate(`/PlayerDashboard`)
         })
         .catch(err=>{
             console.log(err.response.data.errors);
@@ -43,11 +41,12 @@ const UpdatePlayer = (props) => {
 
 return (
     <div>
-        {/* <NavBar/> */}
         <h2 className="mx-auto mt-5">Update Player:</h2>
         <div>
         {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
-        <UpdatePlayerForm onSubmitProp={editPlayer} initialFirstName={player.firstName} initialLastName={player.lastName} initialAddress={player.address} initialCity={player.city} initialState={player.state} initialZipCode={player.zipCode} initialSport={player.sport} intialPosition={player.postion} initialSkillLevel={player.skillLevel} initialEmail={player.email}/>
+        {
+        loaded && <UpdatePlayerForm onSubmitProp={editPlayer} initialFirstName={player.firstName} initialLastName={player.lastName} initialAddress={player.address} initialCity={player.city} initialState={player.state} initialZipCode={player.zipCode} initialSport={player.sport} intialPosition={player.postion} initialSkillLevel={player.skillLevel} initialEmail={player.email}/>
+        }
         </div>
     </div>
     )

@@ -36,7 +36,7 @@ const PlayerNavbar = (props) => {
                             <h5>Assists:  {player.assists}</h5>
                         </div>
                         <div className='ms-5'>
-                            <h5>Yellow Cards:  {player.yellowCard}</h5>
+                            <h5>Yellow Cards:  {player.yellowCards}</h5>
                             <h5>Red Cards:  {player.redCard}</h5>
                         </div>
                     </div>
