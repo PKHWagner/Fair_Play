@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './GameForm.css';
 
 const GameForm = (props) => {
     const {initialGameDate, initialAddress, initialCity, initialState , initialZipCode, initialSetupTime, initialKickOffTime, onSubmitProp} = props;
@@ -26,41 +27,41 @@ const GameForm = (props) => {
         e.preventDefault();
         onSubmitProp(gameData)
     }
-    
+             
 
     return (
-        <div className="col-4 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
-            <form className='mx-auto' onSubmit={onSubmitHandler}>
-                <div className='form-group m-3'>
-                    <label htmlFor='gameDate'>Date:</label>
-                    <input type="date" name="gameDate" id="gameDate" className="form-control" value={gameData.gameDate} onChange = {changeHandler}/>
-                    {
-                        errors.date?
-                        <p>{errors.gameDate.message}</p>:
-                        null
-                    }
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='address'>Address:</label>
-                    <input type="text" name="address" id="address" className="form-control" value={gameData.address} onChange = {changeHandler}/>
-                    {
-                        errors.address?
-                        <p>{errors.address.message}</p>:
-                        null
-                    }
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='city'>City:</label>
-                    <input type="text" name="city" id="city" className="form-control" value={gameData.city} onChange = {changeHandler}/>
-                    {
-                        errors.city?
-                        <p>{errors.city.message}</p>:
-                        null
-                    }
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='state'>State:</label>
-                    <select name="state" id="state" className="form-control" onChange = {changeHandler}>
+        <div className="col-4 mx-auto m-5">
+          <form className='mx-auto form' onSubmit={onSubmitHandler}>
+            <div className='form-group'>
+              <label htmlFor='date'>Date:</label>
+              <input type="date" name="date" id="date" className="form-control input" value={gameData.date} onChange={changeHandler} />
+                {
+                    errors.date ? 
+                    <p className="error">{errors.date.message}</p> : 
+                    null
+                }
+            </div>
+            <div className='form-group'>
+              <label htmlFor='address'>Address:</label>
+              <input type="text" name="saddress" id="address" className="form-control input" value={gameData.address} onChange={changeHandler} />
+                {
+                    errors.address ? 
+                    <p className="error">{errors.address.message}</p> : 
+                    null
+                }
+            </div>
+            <div className='form-group'>
+              <label htmlFor='city'>City:</label>
+              <input type="text" name="city" id="city" className="form-control input" value={gameData.city} onChange={changeHandler} />
+                {
+                    errors.city ? 
+                    <p className="error">{errors.city.message}</p> : 
+                    null
+                }
+            </div>
+            <div className='form-group'>
+              <label htmlFor='state'>State:</label>
+              <select name="state" id="state" className="form-control select" value={gameData.state} onChange={changeHandler}>
                         <option value="null" selected disabled>Select State...</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -113,43 +114,43 @@ const GameForm = (props) => {
                         <option value="WV">West Virginia</option>
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
-                    </select>
-                    {
-                        errors.state?
-                        <p>{errors.state.message}</p>:
-                        null
-                    }
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='zipCode'>Zip Code:</label>
-                    <input type="text" name="zipCode" id="zipCode" className="form-control" value={gameData.zipCode} onChange = {changeHandler}/>
-                    {
-                        errors.zipCode?
-                        <p>{errors.zipCode.message}</p>:
-                        null
-                    }
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='setupTime'>Set Up By:</label>
-                    <input type="time" name="setupTime" id="setupTime" className="form-control" value={gameData.setupTime} onChange = {changeHandler}/>
-                    {
-                        errors.setUpBy?
-                        <p>{errors.setupTime.message}</p>:
-                        null
-                    }
-                </div>
-                <div className='form-group m-3'>
-                    <label htmlFor='kickOffTime'>Kickoff Time:</label>
-                    <input type="time" name="kickOffTime" id="kickOffTime" className="form-control" value={gameData.kickOffTime} onChange = {changeHandler}/>
-                    {
-                        errors.startTime?
-                        <p>{errors.kickOffTime.message}</p>:
-                        null
-                    }
-                </div>
-                <button input type="submit" className='btn btn-warning'>Submit</button>
-            </form>
+              </select>
+                {
+                    errors.state ? 
+                    <p className="error">{errors.state.message}</p> : 
+                    null
+                }
+            </div>
+            <div className='form-group'>
+              <label htmlFor='zipCode'>Zip Code:</label>
+              <input type="text" name="zipCode" id="zipCode" className="form-control input" value={gameData.zipCode} onChange={changeHandler} />
+                {
+                    errors.zipCode ? 
+                    <p className="error">{errors.zipCode.message}</p> : 
+                    null
+                }
+            </div>
+            <div className='form-group'>
+              <label htmlFor='setUpBy'>Set Up By:</label>
+              <input type="time" name="setUpBy" id="setUpBy" className="form-control input" value={gameData.setUpBy} onChange={changeHandler} />
+                {   
+                    errors.setUpBy ? 
+                    <p className="error">{errors.setUpBy.message}</p> : 
+                    null}
+            </div>
+            <div className='form-group'>
+              <label htmlFor='startTime'>Start Time:</label>
+              <input type="time" name="startTime" id="startTime" className="form-control input" value={gameData.startTime} onChange={changeHandler} />
+                {
+                    errors.startTime ? 
+                    <p className="error">{errors.startTime.message}</p> : 
+                    null
+                }
+            </div>
+            <button input type="submit" className='btn btn-warning btn-submit'>Create</button>
+          </form>
         </div>
-    )
+      )
+      
 }
 export default GameForm
