@@ -12,7 +12,7 @@ const AllGamesList = (props) => {
         const player = loggedInPlayer.player;
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/games/allgames')
+        axios.get('http://localhost:8000/api/games')
         .then((res)=>{
             console.log(res.data);
             setAllGames(res.data);
@@ -77,7 +77,6 @@ return (
                                 <Link className='btn btn-secondary' to={`/games/viewGame/${game._id}`}>Roster</Link>
                                 <Link className='btn btn-secondary' to={`/ames/editGame/${game._id}`}>Edit</Link>
                                 {/* <GigDeleteButton className='btn btn-dark' id={game._id} successCallback={()=>deleteGig(game._id)}/> */}
-                                
                             </div>
                         </td>
                     </tr>

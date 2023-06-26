@@ -13,7 +13,7 @@ const PlayerNavbar = (props) => {
     console.log(player._id)
 
     return (
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid d-flex mb ps-5 pe-5">
                 <div className='col-6 d-flex align-items-center'>
                     <div className='navbar-brand'>

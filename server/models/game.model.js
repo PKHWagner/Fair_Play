@@ -35,9 +35,9 @@ const GameSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Kick Off Time is required!']
   },
-  // players: {
-  //   type: Array
-  // }
+  players: {
+    type: Array
+  }
 
 }, {timestamps: true});
 
