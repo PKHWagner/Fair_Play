@@ -96,8 +96,7 @@ const PlayerSchema = new mongoose.Schema({
     type: Number,
   },
   redCard: {
-    type: Boolean,
-    default: false
+    type: Number
   }
 
 }, {timestamps: true});
