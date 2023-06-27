@@ -107,9 +107,9 @@ const GameDayView = ({props}) => {
                             team1.map((player)=>{
                             return(
                                 <tr key={player._id}>
-                                    <td>{player.firstname} {player.lastName}</td>
+                                    <td>{player.firstName} {player.lastName}</td>
                                     <td>{player.position}</td>
-                                    <td>{player.skillLevel}</td>
+                                    <td>{player.skillLevel === 1 ? 'Beginner' : player.skillLevel === 2 ? 'Intermediate' : player.skillLevel === 3 ? 'Advanced' : 'Pro'}</td>
                                 </tr>
                                 )
                             })
@@ -132,9 +132,9 @@ const GameDayView = ({props}) => {
                             team2.map((player)=>{
                             return(
                                 <tr key={player._id}>
-                                    <td>{player.firstname} {player.lastName}</td>
+                                    <td>{player.firstName} {player.lastName}</td>
                                     <td>{player.position}</td>
-                                    <td>{player.skillLevel}</td>
+                                    <td> {player.skillLevel === 1 ? 'Beginner' : player.skillLevel === 2 ? 'Intermediate' : player.skillLevel === 3 ? 'Advanced' : 'Pro'}</td>
                                 </tr>
                                 )
                             }

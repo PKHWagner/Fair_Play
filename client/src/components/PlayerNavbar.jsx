@@ -29,7 +29,7 @@ const PlayerNavbar = (props) => {
                         <h4>{player.firstName} {player.lastName}</h4>
                         <h6>{player.address}</h6>
                         <h6>{player.city} {player.state} {player.zipCode}</h6>
-                        <h6>{player.sport} {player.position} {player.skillLevel}</h6>
+                        <h6>{player.sport} {player.position} {player.skillLevel === 1 ? 'Beginner' : player.skillLevel === 2 ? 'Intermediate' : player.skillLevel === 3 ? 'Advanced' : 'Pro'}</h6>
                         <Link to={`/UpdatePlayer/${id}`} className='btn btn-secondary'>Edit</Link>
                     </div>
                 </div>
