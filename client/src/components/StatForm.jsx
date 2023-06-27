@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './StatForm.css';
 
 const StatForm = (props) => {
@@ -37,7 +37,7 @@ const StatForm = (props) => {
           <form className="stat-form" onSubmit={onSubmitHandler}>
             <div className="form-group">
               <label htmlFor="minutes">Minutes</label>
-              <input type="text" name="minutes" id="minutes" className="form-control" onChange={changeHandler} />
+              <input type="number" min="0" max="100" name="minutes" id="minutes" className="form-control" onChange={changeHandler} />
                 {
                     errors.minutes?
                     <p>{errors.minutes.message}</p>:
@@ -46,7 +46,7 @@ const StatForm = (props) => {
             </div>
             <div className="form-group">
               <label htmlFor="goals">Goals</label>
-              <input type="text" name="goals" id="goals" className="form-control" onChange={changeHandler} />
+              <input type="number" min="0" max="5" name="goals" id="goals" className="form-control" onChange={changeHandler} />
                 {
                     errors.goals?
                     <p>{errors.goals.message}</p>:
@@ -55,7 +55,7 @@ const StatForm = (props) => {
             </div>
             <div className="form-group">
               <label htmlFor="assists">Assists</label>
-              <input type="text" name="assists" id="assists" className="form-control" onChange={changeHandler} />
+              <input type="number" min="0" max="5" name="assists" id="assists" className="form-control" onChange={changeHandler} />
                 {
                     errors.assists?
                     <p>{errors.assists.message}</p>:
@@ -73,9 +73,9 @@ const StatForm = (props) => {
             </div>
             <div className="form-group">
               <label htmlFor="yes">Yes</label>
-              <input type="radio" className="form-radio-input" name="RedCard" id="yes" onChange={changeHandler} value="1"/>
+              <input type="radio" className="form-radio-input" name="redCard" id="yes" onChange={changeHandler} value="1"/>
               <label htmlFor="no">No</label>
-              <input type="radio" className="form-radio-input" name="RedCard" id="no" onChange={changeHandler} value="0"/>
+              <input type="radio" className="form-radio-input" name="redCard" id="no" onChange={changeHandler} value="0"/>
                 {
                     errors.redCard?
                     <p>{errors.redCard.message}</p>:
