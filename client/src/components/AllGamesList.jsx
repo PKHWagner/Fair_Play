@@ -88,40 +88,54 @@ const AllGamesList = (props) => {
     // }
 
 return (
-        <div className='game-list-container'>
-          <table className='game-list-table'>
+    <div className='border border-3 border-secondary rounded mx-auto p-5'>
+        <table className='table border border-3 border-secondary'>
             <thead>
-              <tr>
-                <th scope='col' className='text-start'>Location</th>
-                <th scope='col' className='text-start'>Date</th>
-                <th scope='col' className='text-start'>Times</th>
-                <th scope='col' className='text-start'>Players Committed</th>
-                <th scope='col'>Actions</th>
-              </tr>
+                <tr>
+                    <th scope='col' className='text-start '>Location</th>
+                    <th scope='col' className='text-start '>Date</th>
+                    <th scope='col' className='text-start '>Setup Time</th>
+                    <th scope='col' className='text-start '>Kickoff Time</th>
+                    <th scope='col' className='text-start'>Players Committed</th>
+                    <th scope='col'>Actions</th>
+                </tr>
             </thead>
             <tbody>
-              {allGames.map((game) => {
-                return (
-                  <tr key={game._id}>
-                    <td>{game.addrress} {game.city} {game.state}</td>
-                    <td>{game.date}</td>
-                    <td>SET UP: {game.setUPTime}, START TIME: {game.startTime}</td>
-                    <td>{game.players.length}</td>
-                    <td>
-                      <div className='game-actions'>
-                        <button className='btn btn-secondary' onClick={commitHandler}>Commit</button>
-                        <Link className='btn btn-secondary' to={`/games/viewGame/${game._id}`}>Roster</Link>
-                        <Link className='btn btn-secondary' to={`/games/editGame/${game._id}`}>Edit</Link>
-                        {/* <GigDeleteButton className='btn btn-dark' id={game._id} successCallback={() => deleteGig(game._id)} /> */}
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
+                {
+                allGames.map((game)=>{
+                    const setupTime = formatTime(game.setupTime);
+                    const kickOffTime = formatTime(game.kickOffTime);
+                    const gameDate = formatDate(game.gameDate);
+                    console.log(game);
+                    console.log(player);
+                    // const dayName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                    // const dayOfWeek = dayName[new Date(gig.date).getDay()];
+                return(
+                    <tr key={game._id} className='text-start'>
+                        <td>{game.address} {game.city}, {game.state}</td>
+                        <td>{gameDate}</td>
+                        <td>{setupTime}</td>
+                        <td>{kickOffTime}</td>
+                        <td>{game.players.length}</td>
+                        <td>
+                            <div className='d-flex justify-content-around mx-auto'>
+                                {game.players.some((playerObj) => playerObj._id === player._id) ? (
+                                    <button className='btn btn-secondary' onClick={()=>decommitHandler(game._id)}>Decommit</button>
+                                ) : (
+                                    <button className='btn btn-secondary' onClick={()=>commitHandler(game._id)}>Commit</button>
+                                )}
+                                <Link className='btn btn-secondary' to={`/GameDay/${game._id}`}>Roster</Link>
+                                <Link className='btn btn-secondary' to={`/updateGame/${game._id}`}>Edit</Link>
+                                {/* <GigDeleteButton className='btn btn-dark' id={game._id} successCallback={()=>deleteGig(game._id)}/> */}
+                            </div>
+                        </td>
+                    </tr>
+                    )
+                })
+                }
             </tbody>
-          </table>
-        </div>
-      );
-    };
+        </table>
+    </div>
+)}
 
 export default AllGamesList
