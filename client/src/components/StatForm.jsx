@@ -20,11 +20,17 @@ const StatForm = (props) => {
         console.log(gameStats);
     }
 
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-        onSubmitProp(gameStats)
-    }
-    
+    const onSubmitHandler = e => {
+      e.preventDefault();
+      onSubmitProp({
+        ...gameStats,
+        initialMinutes: parseInt(initialMinutes),
+        initialGoals: parseInt(initialGoals),
+        initialAssists: parseInt(initialAssists),
+        initialYellowCards: parseInt(initialYellowCards),
+        initialRedCard: parseInt(initialRedCard)
+      });
+    };
           
     return (
         <div className="stat-form-container">

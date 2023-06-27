@@ -9,19 +9,34 @@ import { useSelector } from 'react-redux';
 const AddGameStats = (props) => {
     const [player, setPlayer] = useState({});
     const [errors, setErrors] = useState([]);
+    const [existingStats, setExistingStats] = useState ({});
     const navigate = useNavigate();
     const loggedInPlayer = useSelector((state) => state.auth.player);
-
     const id = loggedInPlayer.player._id;
 
+    console.log(player);
 
-    console.log(id);
-
-    // const [loaded, setLoaded] = useState(false);
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/players/${id}`)
+        .then((res)=>{
+            console.log(res.data);
+            setPlayer(res.data);
+            // setExistingStats(res.data.minutes, res.data.goals, res.data.assists, res.data.yellowCards, res.data.redCard);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })}, [])
 
     const editPlayer = player => {
-        axios.patch(`http://localhost:8000/api/players/${id}`, 
-        player)
+            const updatedPlayer = {
+                ...player,
+                minutes: player.minutes + parseInt(player.initialMinutes),
+                goals: player.goals + parseInt(player.initialGoals),
+                assists: player.assists + parseInt(player.initialAssists),
+                yellowCards: player.yellowCards + parseInt(player.initialYellowCards),
+                redCard: player.redCard + parseInt(player.initialRedCard)
+            };
+        axios.patch(`http://localhost:8000/api/players/${id}`, updatedPlayer) 
         .then(res=>{
             console.log(res);
             navigate(`/PlayerDashboard`)
