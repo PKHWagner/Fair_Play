@@ -9,6 +9,7 @@ const GameDayView = ({props}) => {
     const [team1, setTeam1] = useState([]);
     const [team2, setTeam2] = useState([]);
     const gamePlayers = game.players;
+    console.log(gamePlayers);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/games/${id}`)
@@ -34,8 +35,15 @@ const GameDayView = ({props}) => {
         }
         setTeam1(team1);
         setTeam2(team2);
-        setRosters(gamePlayers);
     }
+
+    useEffect(() => {  
+        if (gamePlayers) {
+            setRosters(gamePlayers);
+        }
+    }, [gamePlayers]);
+
+
 
     const formatTime = (time) => {
         if (time) {
@@ -68,6 +76,7 @@ const GameDayView = ({props}) => {
     
     const setupTime = formatTime(game.setupTime);
     const kickOffTime = formatTime(game.kickOffTime);
+
 
     return (
         <div>

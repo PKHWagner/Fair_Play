@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-import GameForm from '../components/GameForm' 
-// import NavBar from '../components/NavBar'
-
+import GameForm from '../components/GameForm'
 
 
 const CreateGame = (props) => {
