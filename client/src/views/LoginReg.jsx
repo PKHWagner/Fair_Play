@@ -12,6 +12,9 @@ const LoginReg = (props) => {
     return (
         <div>
             {/* <NavBar/> */}
+            <div className="login-reg-container">
+                <div className="background"></div>
+                <div className="content"></div>
             <div className="header">
                 <h1><span className="fair">FAIR</span><span className="play">PLAY</span></h1>
             </div>
@@ -34,6 +37,7 @@ const LoginReg = (props) => {
             <div className="footer">
                 <p>Fair Play All Rights Reserved. &copy; 2023</p>
             </div>
+        </div>
         </div>
         )
     }   
