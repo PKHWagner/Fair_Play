@@ -22,14 +22,7 @@ const StatForm = (props) => {
 
     const onSubmitHandler = e => {
       e.preventDefault();
-      onSubmitProp({
-        ...gameStats,
-        initialMinutes: parseInt(initialMinutes),
-        initialGoals: parseInt(initialGoals),
-        initialAssists: parseInt(initialAssists),
-        initialYellowCards: parseInt(initialYellowCards),
-        initialRedCard: parseInt(initialRedCard)
-      });
+      onSubmitProp(gameStats);
     };
           
     return (

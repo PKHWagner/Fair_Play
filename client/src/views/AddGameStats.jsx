@@ -6,7 +6,7 @@ import PlayerNavbar from '../components/PlayerNavbar'
 import { useSelector } from 'react-redux';
 
 
-const AddGameStats = (props) => {
+const AddGameStats = () => {
     const [player, setPlayer] = useState({});
     const [errors, setErrors] = useState([]);
     const [existingStats, setExistingStats] = useState ({});
@@ -27,15 +27,15 @@ const AddGameStats = (props) => {
             console.log(err);
         })}, [])
 
-    const editPlayer = player => {
+    const editPlayer = (gameStats) => {
             const updatedPlayer = {
-                ...player,
-                minutes: player.minutes + parseInt(player.initialMinutes),
-                goals: player.goals + parseInt(player.initialGoals),
-                assists: player.assists + parseInt(player.initialAssists),
-                yellowCards: player.yellowCards + parseInt(player.initialYellowCards),
-                redCard: player.redCard + parseInt(player.initialRedCard)
+                minutes: player.minutes + gameStats.minutes,
+                goals: player.goals + gameStats.goals,
+                assists: player.assists + gameStats.assists,
+                yellowCards: player.yellowCards + gameStats.yellowCards,
+                redCard: player.redCard + gameStats.redCard,
             };
+            console.log(updatedPlayer);
         axios.patch(`http://localhost:8000/api/players/${id}`, updatedPlayer) 
         .then(res=>{
             console.log(res);

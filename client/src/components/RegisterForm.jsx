@@ -81,7 +81,7 @@ const RegisterForm = (props) => {
         if (password !== confirmPassword) {
             toast.error("Passwords don't match")
         } else {
-            const playerData = { firstName, lastName, address, city, state, zipCode, sport, position, skillLevel, email, password, confirmPassword }
+            const playerData = { firstName, lastName, address, city, state, zipCode, sport, position, skillLevel: parseInt(skillLevel), email, password, confirmPassword }
             dispatch(register(playerData))
             navigate('/PlayerDashboard')  
         // onSubmitProp(playerData)
@@ -138,6 +138,7 @@ return (
         <div className="form-group col">
           <label htmlFor="state">State:</label>
           <select name="state" id="state" className="form-control" value={playerData.state} onChange={changeHandler}>
+            <option value="">Select a State...</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -208,6 +209,7 @@ return (
         <div className="form-group col">
           <label htmlFor="sport">Sport:</label>
           <select name="sport" id="sport" className="form-control" value={playerData.sport} onChange={changeHandler}>
+                <option value="">Select Sport...</option>
                 <option value="Soccer">Soccer</option>
                 <option value="Basketball">Basketball</option>
                 <option value="Football">Football</option>
@@ -223,6 +225,7 @@ return (
         <div className="form-group col">
           <label htmlFor="position">Position:</label>
           <select name="position" id="position" className="form-control" value={playerData.position} onChange={changeHandler} >
+                <option value="">Select Position...</option>
                 <option value="Goalkeeper">Goalkeeper</option>
                 <option value="Full-back">Full-back</option>
                 <option value="Center-back">Center-back</option>
@@ -244,6 +247,7 @@ return (
           <label htmlFor="skillLevel">Skill Level:</label>
           <div className="tooltip-container">
           <select name="skillLevel" id="skillLevel" className="form-control" value={playerData.skillLevel} onChange={changeHandler}>
+                <option value="">Select Skill Level...</option>
                 <option value="1">Beginner</option>
                 <option value="2">Intermediate</option>
                 <option value="3">Advanced</option>
