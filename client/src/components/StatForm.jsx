@@ -67,9 +67,9 @@ const StatForm = (props) => {
             </div>
             <div className="form-group">
               <label htmlFor="yes">Yes</label>
-              <input type="radio" className="form-radio-input" name="RedCard" id="yes" onChange={changeHandler} />
+              <input type="radio" className="form-radio-input" name="RedCard" id="yes" onChange={changeHandler} value="1"/>
               <label htmlFor="no">No</label>
-              <input type="radio" className="form-radio-input" name="RedCard" id="no" onChange={changeHandler} />
+              <input type="radio" className="form-radio-input" name="RedCard" id="no" onChange={changeHandler} value="0"/>
                 {
                     errors.redCard?
                     <p>{errors.redCard.message}</p>:

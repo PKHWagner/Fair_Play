@@ -2,15 +2,21 @@ import React, {useState} from 'react';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const PlayerNavbar = (props) => {
+    const [player, setPlayer] = useState({});
+    const id = props.player._id;
 
-    const {player} = props;
-    const id = player._id;
-
-    console.log(player)
-    console.log(player.firstName)
-    console.log(player._id)
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/players/${id}`)
+        .then((res)=>{
+            console.log(res.data);
+            setPlayer(res.data);
+        })
+        .catch((err)=>{
+            console.log(err);
+        })}, [])
 
     return (
         <nav className="navbar navbar-expand-lg bg-light">
