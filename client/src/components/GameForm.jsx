@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './GameForm.css';
+import { toast } from 'react-toastify';
 
 const GameForm = (props) => {
     const {initialGameDate, initialAddress, initialCity, initialState , initialZipCode, initialSetupTime, initialKickOffTime, onSubmitProp} = props;
@@ -13,7 +14,6 @@ const GameForm = (props) => {
         kickoffTime: initialKickOffTime
 
     })
-    const [errors, setErrors] = useState({})
 
     const changeHandler = (e) => {
         setGameData((prevGame) => ({
@@ -27,7 +27,7 @@ const GameForm = (props) => {
         e.preventDefault();
         onSubmitProp(gameData)
     }
-             
+
 
     return (
         <div className="col-4 mx-auto m-5">
@@ -35,29 +35,14 @@ const GameForm = (props) => {
             <div className='form-group'>
               <label htmlFor='date'>Date:</label>
               <input type="date" name="date" id="date" className="form-control input" value={gameData.date} onChange={changeHandler} />
-                {
-                    errors.date ? 
-                    <p className="error">{errors.date.message}</p> : 
-                    null
-                }
             </div>
             <div className='form-group'>
               <label htmlFor='address'>Address:</label>
               <input type="text" name="saddress" id="address" className="form-control input" value={gameData.address} onChange={changeHandler} />
-                {
-                    errors.address ? 
-                    <p className="error">{errors.address.message}</p> : 
-                    null
-                }
             </div>
             <div className='form-group'>
               <label htmlFor='city'>City:</label>
               <input type="text" name="city" id="city" className="form-control input" value={gameData.city} onChange={changeHandler} />
-                {
-                    errors.city ? 
-                    <p className="error">{errors.city.message}</p> : 
-                    null
-                }
             </div>
             <div className='form-group'>
               <label htmlFor='state'>State:</label>
@@ -115,37 +100,18 @@ const GameForm = (props) => {
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
               </select>
-                {
-                    errors.state ? 
-                    <p className="error">{errors.state.message}</p> : 
-                    null
-                }
             </div>
             <div className='form-group'>
               <label htmlFor='zipCode'>Zip Code:</label>
               <input type="text" name="zipCode" id="zipCode" className="form-control input" value={gameData.zipCode} onChange={changeHandler} />
-                {
-                    errors.zipCode ? 
-                    <p className="error">{errors.zipCode.message}</p> : 
-                    null
-                }
             </div>
             <div className='form-group'>
               <label htmlFor='setUpBy'>Set Up By:</label>
               <input type="time" name="setUpBy" id="setUpBy" className="form-control input" value={gameData.setUpBy} onChange={changeHandler} />
-                {   
-                    errors.setUpBy ? 
-                    <p className="error">{errors.setUpBy.message}</p> : 
-                    null}
             </div>
             <div className='form-group'>
               <label htmlFor='startTime'>Start Time:</label>
               <input type="time" name="startTime" id="startTime" className="form-control input" value={gameData.startTime} onChange={changeHandler} />
-                {
-                    errors.startTime ? 
-                    <p className="error">{errors.startTime.message}</p> : 
-                    null
-                }
             </div>
             <button input type="submit" className='btn btn-warning btn-submit'>Create</button>
           </form>
