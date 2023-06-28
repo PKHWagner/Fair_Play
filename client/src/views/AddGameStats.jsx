@@ -29,11 +29,11 @@ const AddGameStats = () => {
 
     const editPlayer = (gameStats) => {
             const updatedPlayer = {
-                minutes: player.minutes + gameStats.minutes,
-                goals: player.goals + gameStats.goals,
-                assists: player.assists + gameStats.assists,
-                yellowCards: player.yellowCards + gameStats.yellowCards,
-                redCard: player.redCard + gameStats.redCard,
+                minutes: parseInt(player.minutes) + parseInt(gameStats.minutes),
+                goals: parseInt(player.goals) + parseInt(gameStats.goals),
+                assists: parseInt(player.assists) + parseInt(gameStats.assists),
+                yellowCards: parseInt(player.yellowCards) + parseInt(gameStats.yellowCards),
+                redCard: parseInt(player.redCard) + parseInt(gameStats.redCard),
             };
             console.log(updatedPlayer);
         axios.patch(`http://localhost:8000/api/players/${id}`, updatedPlayer) 
