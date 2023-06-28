@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import GameForm from '../components/GameForm'
+import PlayerNavbar from '../components/PlayerNavbar'
+import { useSelector } from 'react-redux';
 
 
 const CreateGame = (props) => {
@@ -9,6 +11,7 @@ const CreateGame = (props) => {
     const [game, setGame] = useState(props);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
+    const loggedInPlayer = useSelector((state) => state.auth.player);
 
     const newGame = async (game) => {
         try{
@@ -29,7 +32,7 @@ const CreateGame = (props) => {
 
 return (
     <div>
-        {/* <NavBar/> */}
+        <PlayerNavbar player={loggedInPlayer.player}/>
         <h2 className="mx-auto mt-5">Create Pick Up Game:</h2>
         <div>
             {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}

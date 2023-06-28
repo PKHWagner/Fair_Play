@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom'
 import UpdatePlayerForm from '../components/UpdatePlayerForm' 
+import PlayerNavbar from '../components/PlayerNavbar'
+import { useSelector } from 'react-redux';
 
 const UpdatePlayer = (props) => {
     const [player, setPlayer] = useState(props);
@@ -9,6 +11,7 @@ const UpdatePlayer = (props) => {
     const navigate = useNavigate();
     const{id} = useParams();
     const [loaded, setLoaded] = useState(false);
+    const loggedInPlayer = useSelector((state) => state.auth.player);
 
 
     useEffect(()=>{
@@ -41,6 +44,7 @@ const UpdatePlayer = (props) => {
 
 return (
     <div>
+        <PlayerNavbar player={loggedInPlayer.player}/>
         <h2 className="mx-auto mt-5">Update Player:</h2>
         <div>
         {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}

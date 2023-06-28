@@ -1,11 +1,17 @@
 import React, {useState} from 'react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import {useSelector, useDispatch} from "react-redux"
+import {logout, reducer, reset} from '../slices/authSlice'
 
 const PlayerNavbar = (props) => {
     const [player, setPlayer] = useState({});
     const id = props.player._id;
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const isHomePage = location.pathname === '/PlayerDashboard';
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/players/${id}`)
@@ -16,6 +22,17 @@ const PlayerNavbar = (props) => {
         .catch((err)=>{
             console.log(err);
         })}, [])
+
+    const logoutHandler = () => {
+        try {
+            axios.post('http://localhost:8000/api/logout', {}, {withCredentials: true});
+            dispatch(logout());
+            dispatch(reset());
+            navigate('/');
+        } catch (err) {
+            console.error('Error logging out', err);
+            }
+    }
 
     return (
         <nav className="navbar navbar-expand-lg bg-light">
@@ -30,8 +47,11 @@ const PlayerNavbar = (props) => {
                         <h6>{player.city} {player.state} {player.zipCode}</h6>
                         <h6>{player.sport} - {player.position} - {player.skillLevel === 1 ? 'Beginner' : player.skillLevel === 2 ? 'Intermediate' : player.skillLevel === 3 ? 'Advanced' : 'Pro'}</h6>
                         <Link to={`/UpdatePlayer/${id}`} className='btn btn-secondary'>Edit</Link>
+                        {
+                        !isHomePage &&
                         <Link to={`/PlayerDashboard`} className='btn btn-secondary ms-3'>Home</Link>
-                        <Link to={`/logout`} className='btn btn-secondary ms-3'>Logout</Link>
+                        }
+                        <button className='btn btn-secondary ms-3' onClick={logoutHandler}>Logout</button>
                     </div>
                 </div>
                 <div className='col-6'>

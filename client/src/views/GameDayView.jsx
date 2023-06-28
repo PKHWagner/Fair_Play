@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import PlayerNavbar from "../components/PlayerNavbar";
 
 
 const GameDayView = ({props}) => {
@@ -9,6 +11,7 @@ const GameDayView = ({props}) => {
     const [team1, setTeam1] = useState([]);
     const [team2, setTeam2] = useState([]);
     const gamePlayers = game.players;
+    const loggedInPlayer = useSelector((state) => state.auth.player);
     console.log(gamePlayers);
 
     useEffect(() => {
@@ -81,6 +84,7 @@ const GameDayView = ({props}) => {
     return (
         <div>
             <div>
+                <PlayerNavbar player={loggedInPlayer.player}/>
                 <h1>Game Day</h1>
                 <div>
                     <h3>{game.address} {game.street}</h3>
