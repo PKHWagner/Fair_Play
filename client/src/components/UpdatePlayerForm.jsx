@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './UpdatePlayerForm.css';
 
 const UpdatePlayerForm = (props) => {
     const {initialFirstName, initialLastName, initialAddress, initialCity, initialState, initialZipCode, initialSport, intialPosition, initialSkillLevel, initialEmail, onSubmitProp} = props;
@@ -27,9 +28,9 @@ const UpdatePlayerForm = (props) => {
     }
 
     return (
-        <div className="col-4 bg-secondary mx-auto p-3 border border-3 border-dark rounded m-5">
-            <form className='mx-auto' onSubmit={onSubmitHandler}>
-            <div className='form-group m-3'>
+        <div className="update-player-form-container">
+            <form className='update-player-form' onSubmit={onSubmitHandler}>
+            <div className='form-group'>
                     <label htmlFor='firstName'>First Name:</label>
                     <input type="text" name="firstName" id="firstName" className="form-control" value={playerData.firstName} onChange = {changeHandler}/>
                     {
@@ -38,7 +39,7 @@ const UpdatePlayerForm = (props) => {
                         null
                     }
                 </div>
-                <div className='form-group m-3'>
+                <div className='form-group'>
                     <label htmlFor='lastName'>Last Name:</label>
                     <input type="text" name="lastName" id="lastName" className="form-control" value={playerData.lastName} onChange = {changeHandler}/>
                     {
@@ -47,7 +48,7 @@ const UpdatePlayerForm = (props) => {
                         null
                     }
                 </div>
-                <div className='form-group m-3'>
+                <div className='form-group'>
                     <label htmlFor='address'>Address:</label>
                     <input type="text" name="address" id="address" className="form-control" value={playerData.address} onChange = {changeHandler}/>
                     {
@@ -56,7 +57,7 @@ const UpdatePlayerForm = (props) => {
                         null
                     }
                 </div>
-                <div className='form-group m-3'>
+                <div className='form-group'>
                     <label htmlFor='city'>City:</label>
                     <input type="text" name="city" id="city" className="form-control" value={playerData.city} onChange = {changeHandler}/>
                     {
@@ -65,7 +66,7 @@ const UpdatePlayerForm = (props) => {
                         null
                     }
                 </div>
-                <div className='form-group m-3'>
+                <div className='form-group'>
                     <label htmlFor='state'>State:</label>
                     <select name="state" id="state" className="form-control" value={playerData.state} onChange = {changeHandler}>
                         <option value="AL">Alabama</option>
@@ -126,7 +127,7 @@ const UpdatePlayerForm = (props) => {
                         null
                     }
                 </div>
-                <div className='form-group m-3'>
+                <div className='form-group'>
                     <label htmlFor='zipCode'>Zip Code:</label>
                     <input type="text" name="zipCode" id="zipCode" className="form-control" value={playerData.zipCode} onChange = {changeHandler}/>
                     {
@@ -135,7 +136,7 @@ const UpdatePlayerForm = (props) => {
                         null
                     }
                 </div>
-                <div className='form-group m-3'>
+                <div className='form-group'>
                     <label htmlFor='sport'>Sport:</label>
                     <select name="sport" id="sport" className="form-control" value={playerData.sport} onChange = {changeHandler}>
                         <option value="Soccer">Soccer</option>
@@ -150,7 +151,7 @@ const UpdatePlayerForm = (props) => {
                         null
                     }
                 </div>
-                <div className='form-group m-3'>
+                <div className='form-group'>
                     <label htmlFor='position'>Postion:</label>
                     <select name="position" id="position" className="form-control" value={playerData.position} onChange = {changeHandler}>
                         <option value="Goalkeeper">Goalkeeper</option>
@@ -169,7 +170,7 @@ const UpdatePlayerForm = (props) => {
                         null
                     }
                 </div>
-                <div className='form-group m-3'>
+                <div className='form-group'>
                     <label htmlFor='skillLevel'>Skill Level:</label>
                     <select name="skillLevel" id="skillLevel" className="form-control" value={playerData.skillLevel} onChange = {changeHandler}>
                         <option value="1">Beginner</option>
@@ -183,7 +184,7 @@ const UpdatePlayerForm = (props) => {
                         null
                     }
                 </div>
-                <div className='form-group m-3'>
+                <div className='form-group'>
                     <label htmlFor='email'>Email:</label>
                     <input type="text" name="email" id="email" className="form-control" value={playerData.email} onChange = {changeHandler}/>
                     {
@@ -192,7 +193,7 @@ const UpdatePlayerForm = (props) => {
                         null
                     }
                 </div>
-                <button input type="submit" className='btn btn-warning'>Submit</button>
+                <button input type="submit" className='update-button'>Update</button>
             </form>
         </div>
     )

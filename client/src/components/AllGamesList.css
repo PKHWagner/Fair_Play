@@ -1,55 +1,65 @@
-.game-list-container {
-    padding: 10px;
-    margin: 0 auto;
-  }
-  
-  .game-list-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-  }
-  
-  .game-list-table th {
-    text-align: left;
-    font-weight: bold;
-    padding: 10px;
-    background-color: #f1f1f1;
-    color: #333;
-  }
-  
-  .game-list-table th:not(:last-child),
-  .game-list-table td:not(:last-child) {
-    border-right: 1px solid #ccc;
-  }
-  
-  .game-list-table th:not(:first-child),
-  .game-list-table td:not(:first-child) {
-    border-left: 1px solid #ccc;
-  }
-  
-  .game-list-table td {
-    padding: 10px;
-  }
-  
-  .game-actions {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .game-actions button,
-  .game-actions a {
-    padding: 8px 15px;
-    background-color: #77c761;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .game-actions button:hover,
-  .game-actions a:hover {
-    background-color: #66b357;
-  }    
-  
+.container {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.table th {
+  text-align: left;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.table th:not(:last-child),
+.table td:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+
+.table th:not(:first-child),
+.table td:not(:first-child) {
+  border-left: 1px solid #ccc;
+}
+
+.table td {
+  padding: 10px;
+}
+
+.text-start {
+  text-align: left;
+}
+
+.border-3 {
+  border-width: 3px;
+}
+
+.border-secondary {
+  border-color: #6c757d;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  padding: 8px 15px;
+  background-color: #77c761;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn:hover {
+  background-color: #6866ee;
+}

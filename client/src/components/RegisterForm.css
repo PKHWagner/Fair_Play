@@ -157,33 +157,49 @@
     animation: buttonAnimation 1s infinite;
   }
 
-  .tooltip-container {
-    position: relative;
-  }
-             
-  .tooltip {
-    visibility: hidden;
-    width: 200px;
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    border-radius: 4px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .tooltip-container:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  
-  
-  
-  
+  /* skill level side */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.tooltip {
+  visibility: hidden;
+  width: 240px;
+  background-color: #64cbac;
+  color: rgb(7, 6, 6);
+  text-align: center;
+  border-radius: 4px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 4px 0;
+}

@@ -1,0 +1,81 @@
+.navbar {
+    background-color: #78dada;
+    padding: 20px;
+  }
+  
+  .container-fluid {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navbar-brand {
+    margin-right: 20px;
+  }
+  
+  .profile-picture img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #34568b;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .text-start {
+    margin-left: 20px;
+  }
+  
+  h4 {
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  
+  h6 {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .btn-secondary-one {
+    margin-top: 10px;
+    background-color: #3409c1;
+    color: #fff;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-secondary-one:hover {
+    background-color: #d32f2f;
+  }
+  
+  .btn-secondary-one:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #f44336;
+  }
+  
+  .text-start.mb-4 {
+    /* margin-top: 0px; */
+    font-size: 25px;
+    color: #343a40;
+  }
+  
+  .d-flex.text-start .me-5 h5,
+  .d-flex.text-start .ms-5 h5 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #343a40;
+  }
+  
+  .d-flex.text-start .me-5 {
+    margin-right: 50px;
+  }
+  
+  .player-stats {
+    background-color: #f8f9fa;
+    padding-top: 20px;
+  }
+  

@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import {useSelector, useDispatch} from "react-redux"
 import {logout, reducer, reset} from '../slices/authSlice'
+import './PlayerNavbar.css';
 
 const PlayerNavbar = (props) => {
     const [player, setPlayer] = useState({});
@@ -35,7 +36,7 @@ const PlayerNavbar = (props) => {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar">
             <div className="container-fluid d-flex mb ps-5 pe-5">
                 <div className='col-6 d-flex align-items-center'>
                     <div className='navbar-brand'>
@@ -46,12 +47,12 @@ const PlayerNavbar = (props) => {
                         <h6>{player.address}</h6>
                         <h6>{player.city} {player.state} {player.zipCode}</h6>
                         <h6>{player.sport} - {player.position} - {player.skillLevel === 1 ? 'Beginner' : player.skillLevel === 2 ? 'Intermediate' : player.skillLevel === 3 ? 'Advanced' : 'Pro'}</h6>
-                        <Link to={`/UpdatePlayer/${id}`} className='btn btn-secondary'>Edit</Link>
+                        <Link to={`/UpdatePlayer/${id}`} className='btn-secondary-one ms-3'>Edit</Link>
                         {
                         !isHomePage &&
-                        <Link to={`/PlayerDashboard`} className='btn btn-secondary ms-3'>Home</Link>
+                        <Link to={`/PlayerDashboard`} className='btn-secondary-one ms-3'>Home</Link>
                         }
-                        <button className='btn btn-secondary ms-3' onClick={logoutHandler}>Logout</button>
+                        <button className='btn-secondary-one ms-3' onClick={logoutHandler}>Logout</button>
                     </div>
                 </div>
                 <div className='col-6'>

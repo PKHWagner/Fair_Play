@@ -249,15 +249,19 @@ return (
       <div className="form-row m-3">
           <div className="form-group col">
           <label htmlFor="skillLevel">Skill Level:</label>
-          <div className="tooltip-container">
-          <select name="skillLevel" id="skillLevel" className="form-control" value={playerData.skillLevel} onChange={changeHandler}>
-                <option value="">Select Skill Level...</option>
-                <option value="1">Beginner</option>
-                <option value="2">Intermediate</option>
-                <option value="3">Advanced</option>
-                <option value="4">Pro</option>
-          </select>
-          <div className="tooltip">Skill Level Explanation Goes Here</div>
+              <div className="tooltip-container">
+                <select name="skillLevel" id="skillLevel" className="form-control" value={playerData.skillLevel} onChange={changeHandler}>
+                  <option value="1">Beginner</option>
+                  <option value="2">Intermediate</option>
+                  <option value="3">Advanced</option>
+                  <option value="4">Pro</option>
+                </select>
+        <div className="tooltip">
+              <p className="tooltip-text">Beginner - Never played in a match and has little to no knowledge of the rules of the game.</p>
+              <p className="tooltip-text">Intermediate - Plays, or has played, occasionally in matches and knows most rules of the game.</p>
+              <p className="tooltip-text">Advanced - Plays in matches regularly and has in-depth knowledge of all the rules.</p>
+              <p className="tooltip-text">Pro - Plays regularly and has a history of playing professionally or played in high school and college. Has an in-depth knowledge of all the rules.</p>
+        </div>
       </div>
           {
               errors.skillLevel ? 
@@ -265,7 +269,6 @@ return (
               null
           }
       </div>
-
         <div className="form-group col">
         <label htmlFor='email'>Email:</label>
         <input type="text" name="email" id="email" className="form-control" value={playerData.email} onChange = {changeHandler}/>
