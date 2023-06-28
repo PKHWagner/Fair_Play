@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {useNavigate, Link} from 'react-router-dom'
 import axios from 'axios'
 import {useSelector} from 'react-redux'
+import './AllGamesList.css';
 // import DeleteButton from './DeleteButton'
 
 const AllGamesList = (props) => {
@@ -88,8 +89,8 @@ const AllGamesList = (props) => {
     // }
 
 return (
-    <div className='border border-3 border-secondary rounded mx-auto p-5'>
-        <table className='table border border-3 border-secondary'>
+    <div className='container'>
+        <table className='table border-3 border-secondary'>
             <thead>
                 <tr>
                     <th scope='col' className='text-start '>Location</th>
@@ -118,14 +119,14 @@ return (
                         <td>{kickOffTime}</td>
                         <td>{game.players.length}</td>
                         <td>
-                            <div className='d-flex justify-content-around mx-auto'>
+                            <div className='action-button'>
                                 {game.players.some((playerObj) => playerObj._id === player._id) ? (
-                                    <button className='btn btn-secondary' onClick={()=>decommitHandler(game._id)}>Decommit</button>
+                                    <button className='btn' onClick={()=>decommitHandler(game._id)}>Decommit</button>
                                 ) : (
-                                    <button className='btn btn-secondary' onClick={()=>commitHandler(game._id)}>Commit</button>
+                                    <button className='btn' onClick={()=>commitHandler(game._id)}>Commit</button>
                                 )}
-                                <Link className='btn btn-secondary' to={`/GameDay/${game._id}`}>Roster</Link>
-                                <Link className='btn btn-secondary' to={`/updateGame/${game._id}`}>Edit</Link>
+                                <Link className='btn' to={`/GameDay/${game._id}`}>Roster</Link>
+                                <Link className='btn' to={`/updateGame/${game._id}`}>Edit</Link>
                                 {/* <GigDeleteButton className='btn btn-dark' id={game._id} successCallback={()=>deleteGig(game._id)}/> */}
                             </div>
                         </td>
