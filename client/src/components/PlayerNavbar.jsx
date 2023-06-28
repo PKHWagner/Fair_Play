@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -29,8 +28,10 @@ const PlayerNavbar = (props) => {
                         <h4>{player.firstName} {player.lastName}</h4>
                         <h6>{player.address}</h6>
                         <h6>{player.city} {player.state} {player.zipCode}</h6>
-                        <h6>{player.sport} {player.position} {player.skillLevel === 1 ? 'Beginner' : player.skillLevel === 2 ? 'Intermediate' : player.skillLevel === 3 ? 'Advanced' : 'Pro'}</h6>
+                        <h6>{player.sport} - {player.position} - {player.skillLevel === 1 ? 'Beginner' : player.skillLevel === 2 ? 'Intermediate' : player.skillLevel === 3 ? 'Advanced' : 'Pro'}</h6>
                         <Link to={`/UpdatePlayer/${id}`} className='btn btn-secondary'>Edit</Link>
+                        <Link to={`/PlayerDashboard`} className='btn btn-secondary ms-3'>Home</Link>
+                        <Link to={`/logout`} className='btn btn-secondary ms-3'>Logout</Link>
                     </div>
                 </div>
                 <div className='col-6'>
