@@ -8,17 +8,21 @@ const initialState = {
     isError: false,
     isSuccess: false,
     isLoading: false,
-    message: ''
+    message: '',
+    errors: {}
 }
 
-export const register = createAsyncThunk(
-    'auth/register', 
-    async (player, thunkAPI) => {
+export const register = createAsyncThunk('auth/register', async (player, thunkAPI) => {
         try {
             return await authService.register(player)
         } catch (error) {
-            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-            return thunkAPI.rejectWithValue(message)
+            const errorResponse = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            const errorFields = Object.keys(errorResponse);
+            const errors = {};
+            errorFields.forEach(field => {
+                errors[field] = errorResponse[field].message;
+            });
+            return thunkAPI.rejectWithValue(errors);
         }
     })
 
@@ -48,6 +52,7 @@ export const authSlice = createSlice({
             state.isSuccess = false;
             state.isLoading = false;
             state.message = '';
+            state.errors = {};
         }
     },
     extraReducers: (builder) => {
@@ -63,8 +68,13 @@ export const authSlice = createSlice({
         .addCase(register.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
-            state.message = action.payload;
-            state.player = null;
+            state.errors = action.payload || {};
+
+            if (action.payload && typeof action.payload === 'object') {
+                Object.keys(action.payload).forEach((fieldName) => {
+                    state.errors[fieldName] = action.payload[fieldName].message;
+                })
+            }
         })
         .addCase(login.pending, (state) => {
             state.isLoading = true;
@@ -77,7 +87,7 @@ export const authSlice = createSlice({
         .addCase(login.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
-            state.message = action.payload;
+            state.message = action.payload || {};
             state.player = null;
         })
         .addCase(logout.fulfilled, (state) => {
