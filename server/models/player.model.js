@@ -81,22 +81,27 @@ const PlayerSchema = new mongoose.Schema({
   },
   minutes: {
     type: Number,
+    default: 0,
     min: [0, "Minutes cannot be a negative number!"]
     
   },
   goals: {
     type: Number,
+    default: 0,
     min: [0, "Goals cannot be a negative number!"]
   },
   assists: {
     type: Number,
+    default: 0,
     min: [0, "Assists cannot be a negative number!"]
   },
   yellowCards: {
     type: Number,
+    default: 0
   },
   redCard: {
-    type: Number
+    type: Number,
+    default: 0
   }
 
 }, {timestamps: true});
