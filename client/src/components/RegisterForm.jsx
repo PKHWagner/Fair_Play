@@ -100,7 +100,7 @@ return (
           <input type="text" name="firstName" id="firstName" className="form-control input-field" value={playerData.firstName} onChange={changeHandler}/>
           {
               errors.firstName ? 
-              <p>{errors.firstName.message}</p> : 
+              toast.error(errors.firstName.message) :
               null
           }
         </div>
@@ -109,7 +109,7 @@ return (
           <input type="text" name="lastName" id="lastName" className="form-control" value={playerData.lastName} onChange={changeHandler}/>
           {
               errors.lastName ? 
-              <p>{errors.lastName.message}</p> : 
+              toast.error(errors.lastName.message) :
               null
           }
         </div>
@@ -120,7 +120,7 @@ return (
           <input type="text" name="address" id="address" className="form-control" value={playerData.address} onChange={changeHandler}/>
           {
               errors.address ?
-              <p>{errors.address.message}</p> : 
+              toast.error(errors.address.message) :
               null
           }
         </div>
@@ -129,7 +129,7 @@ return (
         <input type="text" name="city" id="city" className="form-control" value={playerData.city} onChange = {changeHandler}/>
           {
               errors.city?
-              <p>{errors.city.message}</p>:
+              toast.error(errors.city.message) :
               null
           }
         </div>
@@ -193,7 +193,7 @@ return (
           </select>
           {
               errors.state ? 
-              <p>{errors.state.message}</p> : 
+              toast.error(errors.state.message) :
               null
           }
         </div>
@@ -201,7 +201,11 @@ return (
         <div className="form-group col">
           <label htmlFor="zipCode">Zip Code:</label>
           <input type="text" name="zipCode" id="zipCode" className="form-control" value={playerData.zipCode} onChange={changeHandler}/>
-          {errors.zipCode ? <p>{errors.zipCode.message}</p> : null}
+          {
+              errors.zipCode ? 
+              toast.error(errors.zipCode.message) :
+              null
+          }
         </div>
 
       </div>
@@ -218,7 +222,7 @@ return (
           </select>
           {
               errors.sport ? 
-              <p>{errors.sport.message}</p> : 
+              toast.error(errors.sport.message) :
               null
           }
         </div>
@@ -237,7 +241,7 @@ return (
           </select>
           {
               errors.position ? 
-              <p>{errors.position.message}</p> : 
+              toast.error(errors.position.message) : 
               null
           }
         </div>
@@ -259,18 +263,18 @@ return (
               <p className="tooltip-text">Pro - Plays regularly and has a history of playing professionally or played in high school and college. Has an in-depth knowledge of all the rules.</p>
         </div>
       </div>
-              {
-                errors.skillLevel ?
-                <p>{errors.skillLevel.message}</p> :
-                null
-              }
+          {
+              errors.skillLevel ? 
+              toast.error(errors.skillLevel.message) :
+              null
+          }
       </div>
         <div className="form-group col">
         <label htmlFor='email'>Email:</label>
         <input type="text" name="email" id="email" className="form-control" value={playerData.email} onChange = {changeHandler}/>
           {
               errors.email?
-              <p>{errors.email.message}</p>:
+              toast.error(errors.email.message) :
               null
           }
         </div>
@@ -279,9 +283,9 @@ return (
         <div className="form-group col">
         <label htmlFor='password'>Password:</label>
         <input type="password" name="password" id="password" className="form-control" value={playerData.password} onChange = {changeHandler}/>
-         {
+          {
               errors.password?
-              <p>{errors.password.message}</p>:
+              toast.error(errors.password.message) :
               null
           }
         </div>
@@ -290,7 +294,7 @@ return (
         <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" value={playerData.confirmPassword} onChange = {changeHandler}/>
           {
               errors.confirmPassword?
-              <p>{errors.confirmPassword.message}</p>:
+              toast.error(errors.confirmPassword.message) :
               null
           }
         </div>

@@ -1,12 +1,14 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginReg from './views/LoginReg';
+import 'react-toastify/dist/ReactToastify.css';
 import CreateGame from './views/CreateGame';
 import UpdatePlayer from './views/UpdatePlayer';
 import AddGameStats from './views/AddGameStats';
 import PlayerDashboard from './views/PlayerDashboard';
 import UpdateGame from './views/UpdateGame';
 import GameDayView from './views/GameDayView';
+import LoginReg from './views/LoginReg';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Route path="/GameDay/:id" element={<GameDayView/>} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 }

@@ -4,11 +4,12 @@ import {useNavigate} from 'react-router-dom'
 import GameForm from '../components/GameForm'
 import PlayerNavbar from '../components/PlayerNavbar'
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 const CreateGame = (props) => {
     const [allGames, setAllGames] = useState([]);
-    const [game, setGame] = useState(props);
+    const [game, setGame] = useState({});
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
     const loggedInPlayer = useSelector((state) => state.auth.player);
@@ -21,21 +22,23 @@ const CreateGame = (props) => {
                 setAllGames([...allGames, res.data]);
                 navigate('/AdminDashboard')
             } catch (err) {
-                console.log(err)
-                const errorResponse = err.response.data.message;
+                console.log(err.response.data.err.errors)
+                const errorResponse = err.response.data.err.errors;
                 const errorArray = [];
-                for (const key of Object.keys(errorResponse)) 
+                console.log(errorArray)
+                for (const key of Object.keys(errorResponse)) {
                     {errorArray.push(errorResponse[key].message)}
-                setErrors(errorArray);
-            }
-        };
+                    toast.error(errorResponse[key].message)
+                }
+            setErrors(errorArray);
+        }
+    }
 
 return (
     <div>
         <PlayerNavbar player={loggedInPlayer.player}/>
         <h2 className="mx-auto mt-5">Create Pick Up Game:</h2>
         <div>
-            {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
             <GameForm onSubmitProp={newGame} initialGameDate="" initialAddress="" initialCity="" initialState=""  initialZipCode="" initialSetupTime="" initialKickOffTime=""/>
         </div>
     </div>
