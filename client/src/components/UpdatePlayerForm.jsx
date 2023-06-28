@@ -1,8 +1,22 @@
 import React, { useState } from 'react'
 import './UpdatePlayerForm.css';
+import { toast } from 'react-toastify';
 
 const UpdatePlayerForm = (props) => {
-    const {initialFirstName, initialLastName, initialAddress, initialCity, initialState, initialZipCode, initialSport, intialPosition, initialSkillLevel, initialEmail, onSubmitProp} = props;
+    const {
+        initialFirstName, 
+        initialLastName, 
+        initialAddress, 
+        initialCity, 
+        initialState, 
+        initialZipCode, 
+        initialSport, 
+        intialPosition, 
+        initialSkillLevel, 
+        initialEmail, 
+        onSubmitProp
+    } = props;
+
     const [playerData, setPlayerData] = useState({
         firstName: initialFirstName,
         lastName: initialLastName,
@@ -15,6 +29,7 @@ const UpdatePlayerForm = (props) => {
         skillLevel: initialSkillLevel,
         email: initialEmail,
     })
+
     const [errors, setErrors] = useState({})
 
     const changeHandler = (e) => {
@@ -35,7 +50,7 @@ const UpdatePlayerForm = (props) => {
                     <input type="text" name="firstName" id="firstName" className="form-control" value={playerData.firstName} onChange = {changeHandler}/>
                     {
                         errors.firstName?
-                        <p>{errors.firstName.message}</p>:
+                        toast.error(errors.firstName.message) :
                         null
                     }
                 </div>
@@ -44,7 +59,7 @@ const UpdatePlayerForm = (props) => {
                     <input type="text" name="lastName" id="lastName" className="form-control" value={playerData.lastName} onChange = {changeHandler}/>
                     {
                         errors.lastName?
-                        <p>{errors.lastName.message}</p>:
+                        toast.error(errors.lastName.message) :
                         null
                     }
                 </div>
@@ -53,7 +68,7 @@ const UpdatePlayerForm = (props) => {
                     <input type="text" name="address" id="address" className="form-control" value={playerData.address} onChange = {changeHandler}/>
                     {
                         errors.streetAddress?
-                        <p>{errors.streetAddress.message}</p>:
+                        toast.error(errors.streetAddress.message) :
                         null
                     }
                 </div>
@@ -62,7 +77,7 @@ const UpdatePlayerForm = (props) => {
                     <input type="text" name="city" id="city" className="form-control" value={playerData.city} onChange = {changeHandler}/>
                     {
                         errors.city?
-                        <p>{errors.city.message}</p>:
+                        toast.error(errors.city.message):
                         null
                     }
                 </div>
@@ -123,7 +138,7 @@ const UpdatePlayerForm = (props) => {
                     </select>
                     {
                         errors.state?
-                        <p>{errors.state.message}</p>:
+                        toast.error(errors.state.message) :
                         null
                     }
                 </div>
@@ -132,7 +147,7 @@ const UpdatePlayerForm = (props) => {
                     <input type="text" name="zipCode" id="zipCode" className="form-control" value={playerData.zipCode} onChange = {changeHandler}/>
                     {
                         errors.zipCode?
-                        <p>{errors.zipCode.message}</p>:
+                        toast.error(errors.zipCode.message) :
                         null
                     }
                 </div>
@@ -147,7 +162,7 @@ const UpdatePlayerForm = (props) => {
                     </select>
                     {
                         errors.sport?
-                        <p>{errors.sport.message}</p>:
+                        toast.error(errors.sport.message) :
                         null
                     }
                 </div>
@@ -166,7 +181,7 @@ const UpdatePlayerForm = (props) => {
                     </select>
                     {
                         errors.position?
-                        <p>{errors.position.message}</p>:
+                        toast.error(errors.position.message) :
                         null
                     }
                 </div>
@@ -180,7 +195,7 @@ const UpdatePlayerForm = (props) => {
                     </select>
                     {
                         errors.skillLevel?
-                        <p>{errors.skillLevel.message}</p>:
+                        toast.error(errors.skillLevel.message) :
                         null
                     }
                 </div>
@@ -189,7 +204,7 @@ const UpdatePlayerForm = (props) => {
                     <input type="text" name="email" id="email" className="form-control" value={playerData.email} onChange = {changeHandler}/>
                     {
                         errors.email?
-                        <p>{errors.email.message}</p>:
+                        toast.error(errors.email.message) :
                         null
                     }
                 </div>

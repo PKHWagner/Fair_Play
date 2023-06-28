@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { register } from '../slices/authSlice';
-import { reset } from '../slices/authSlice';
 import './RegisterForm.css';
 
 
@@ -16,7 +15,7 @@ const RegisterForm = (props) => {
         initialState, 
         initialZipCode, 
         initialSport, 
-        intialPosition, 
+        initialPosition, 
         initialSkillLevel, 
         initialEmail, 
         initialPassword , 
@@ -36,7 +35,7 @@ const RegisterForm = (props) => {
         state: initialState,
         zipCode: initialZipCode,
         sport: initialSport,
-        position: intialPosition,
+        position: initialPosition,
         skillLevel: initialSkillLevel,
         email: initialEmail,
         password: initialPassword,
@@ -50,23 +49,33 @@ const RegisterForm = (props) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    
-    const [errors, setErrors] = useState({})
+    const {errors} = useSelector((state) => state.auth)
+    const {firstName,
+      lastName, 
+      address, 
+      city, 
+      state, 
+      zipCode, 
+      sport, 
+      position, 
+      skillLevel, 
+      email, 
+      password, 
+      confirmPassword
+    } = playerData;
 
-    const {firstName, lastName, address, city, state, zipCode, sport, position, skillLevel, email, password, confirmPassword} = playerData;
+    const {player, isLoading, isError, isSuccess, message
+    } = useSelector((state) => state.auth)
 
-    const {player, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
-
-    useEffect(() => {
-        if (isError) {
-            toast.error(message)
-        }
-        if (isSuccess || player) {
-            navigate('/')
-        }
-
-        dispatch (reset())
-    }, [player, isError, isSuccess, message, navigate, dispatch])
+    // useEffect(() => {
+    //     if (isError) {
+    //         console.log(message)
+    //         toast.error(message)
+    //     }
+    //     if (isSuccess || player) {
+    //       navigate('/PlayerDashboard')
+    //     }
+    // }, [isError, isSuccess, message, navigate, dispatch])
 
     const changeHandler = (e) => {
         setPlayerData((prevState) => ({
@@ -76,20 +85,41 @@ const RegisterForm = (props) => {
         console.log(playerData)
     }
 
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
-            toast.error("Passwords don't match")
-        } else {
-            const playerData = { firstName, lastName, address, city, state, zipCode, sport, position, skillLevel: parseInt(skillLevel), email, password, confirmPassword }
-            dispatch(register(playerData))
-            navigate('/PlayerDashboard')  
-        // onSubmitProp(playerData)
+        const playerData = { 
+          firstName, 
+          lastName, 
+          address, 
+          city, 
+          state, 
+          zipCode, 
+          sport, 
+          position, 
+          skillLevel: 
+          parseInt(skillLevel), 
+          email, 
+          password, 
+          confirmPassword
+        }
+
+        const response = await dispatch(register(playerData))
+        console.log(response)
+        console.log(response.payload)
+        console.log(response.payload.error)
+        
+        if(response.payload && response.payload) {
+            navigate('/PlayerDashboard')
+        } else if (response.payload) {
+            const {errors} = response.payload;
+            Object.keys(errors).forEach((key) => {
+            toast.error(errors[key])
+          })}
     }
     if (isLoading) {
         return <h1>Loading...</h1>
-    }
-}
+  }
+
 return (
     <div className="register-section">
         <form className='mx-auto' onSubmit={onSubmitHandler}>
@@ -100,7 +130,7 @@ return (
           <input type="text" name="firstName" id="firstName" className="form-control input-field" value={playerData.firstName} onChange={changeHandler}/>
           {
               errors.firstName ? 
-              toast.error(errors.firstName.message) :
+              toast.error(errors && errors.firstName.message) :
               null
           }
         </div>
@@ -109,7 +139,7 @@ return (
           <input type="text" name="lastName" id="lastName" className="form-control" value={playerData.lastName} onChange={changeHandler}/>
           {
               errors.lastName ? 
-              toast.error(errors.lastName.message) :
+              toast.error(errors && errors.lastName.message) :
               null
           }
         </div>
@@ -120,7 +150,7 @@ return (
           <input type="text" name="address" id="address" className="form-control" value={playerData.address} onChange={changeHandler}/>
           {
               errors.address ?
-              toast.error(errors.address.message) :
+              toast.error(errors && errors.address.message) :
               null
           }
         </div>
@@ -129,7 +159,7 @@ return (
         <input type="text" name="city" id="city" className="form-control" value={playerData.city} onChange = {changeHandler}/>
           {
               errors.city?
-              toast.error(errors.city.message) :
+              toast.errorerrors && (errors.city.message) :
               null
           }
         </div>
@@ -193,7 +223,7 @@ return (
           </select>
           {
               errors.state ? 
-              toast.error(errors.state.message) :
+              toast.error(errors && errors.state.message) :
               null
           }
         </div>
@@ -203,7 +233,7 @@ return (
           <input type="text" name="zipCode" id="zipCode" className="form-control" value={playerData.zipCode} onChange={changeHandler}/>
           {
               errors.zipCode ? 
-              toast.error(errors.zipCode.message) :
+              toast.error(errors && errors.zipCode.message) :
               null
           }
         </div>
@@ -222,7 +252,7 @@ return (
           </select>
           {
               errors.sport ? 
-              toast.error(errors.sport.message) :
+              toast.error(errors && errors.sport.message) :
               null
           }
         </div>
@@ -241,7 +271,7 @@ return (
           </select>
           {
               errors.position ? 
-              toast.error(errors.position.message) : 
+              toast.error(errors && errors.position.message) : 
               null
           }
         </div>
@@ -265,7 +295,7 @@ return (
       </div>
           {
               errors.skillLevel ? 
-              toast.error(errors.skillLevel.message) :
+              toast.error(errors && errors.skillLevel.message) :
               null
           }
       </div>
@@ -274,7 +304,7 @@ return (
         <input type="text" name="email" id="email" className="form-control" value={playerData.email} onChange = {changeHandler}/>
           {
               errors.email?
-              toast.error(errors.email.message) :
+              toast.error(errors && errors.email.message) :
               null
           }
         </div>
@@ -285,7 +315,7 @@ return (
         <input type="password" name="password" id="password" className="form-control" value={playerData.password} onChange = {changeHandler}/>
           {
               errors.password?
-              toast.error(errors.password.message) :
+              toast.error(errors && errors.password.message) :
               null
           }
         </div>
@@ -294,7 +324,7 @@ return (
         <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" value={playerData.confirmPassword} onChange = {changeHandler}/>
           {
               errors.confirmPassword?
-              toast.error(errors.confirmPassword.message) :
+              toast.error(errors && errors.confirmPassword.message) :
               null
           }
         </div>
