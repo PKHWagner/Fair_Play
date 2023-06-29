@@ -119,8 +119,8 @@ const RegisterForm = (props) => {
 
 return (
     <div className="register-section">
-        <form className='mx-auto' onSubmit={onSubmitHandler}>
-        <h1> Register: </h1>
+        <form className='mx-auto p-4' onSubmit={onSubmitHandler}>
+        <h1 className=''> Register: </h1>
       <div className="form-row m-3">
         <div className="form-group col">
           <label htmlFor="firstName">First Name:</label>
@@ -321,7 +321,7 @@ return (
           } */}
         </div>
       </div>
-      <button type="submit" className="btn btn-primary m-3 submit-button">Register
+      <button type="submit" className="btn btn-primary mt-4 submit-button">Register
 </button>
 </form>
     </div>

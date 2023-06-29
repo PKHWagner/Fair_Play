@@ -32,7 +32,6 @@
   h6 {
     margin-bottom: 5px;
     font-size: 14px;
-    color: #6c757d;
   }
   
   .btn-secondary-one {
@@ -60,14 +59,12 @@
   .text-start.mb-4 {
     /* margin-top: 0px; */
     font-size: 25px;
-    color: #343a40;
   }
   
   .d-flex.text-start .me-5 h5,
   .d-flex.text-start .ms-5 h5 {
     font-size: 16px;
     margin-bottom: 15px;
-    color: #343a40;
   }
   
   .d-flex.text-start .me-5 {
@@ -78,4 +75,6 @@
     background-color: #f8f9fa;
     padding-top: 20px;
   }
+  
+
   
