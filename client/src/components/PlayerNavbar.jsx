@@ -24,10 +24,10 @@ const PlayerNavbar = (props) => {
             console.log(err);
         })}, [])
 
-    const logoutHandler = () => {
+    const logoutHandler = async () => {
         try {
-            axios.post('http://localhost:8000/api/logout', {}, {withCredentials: true});
-            dispatch(logout());
+            await axios.post('http://localhost:8000/api/logout', {}, {withCredentials: true});
+            await dispatch(logout());
             dispatch(reset());
             navigate('/');
         } catch (err) {

@@ -20,7 +20,7 @@ const CreateGame = (props) => {
                 console.log(res);
                 setGame(res.data)
                 setAllGames([...allGames, res.data]);
-                navigate('/AdminDashboard')
+                navigate('/PlayerDashboardgit branch -a')
             } catch (err) {
                 console.log(err.response.data.err.errors)
                 const errorResponse = err.response.data.err.errors;

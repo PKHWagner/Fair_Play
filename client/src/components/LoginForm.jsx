@@ -18,7 +18,7 @@ const LoginForm = (props) => {
 
     const [errors, setErrors] = useState({})
 
-    const {email, password} = loginInfo;
+    // const {email, password} = loginInfo;
 
     const {player, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
 
@@ -31,7 +31,7 @@ const LoginForm = (props) => {
         }
 
         dispatch (reset())
-    }, [player, isError, isSuccess, message, navigate, dispatch])
+    }, [isError, isSuccess, message, navigate, dispatch])
 
 
     const logChangeHandler = (e) => {
@@ -41,10 +41,11 @@ const LoginForm = (props) => {
     }
 
     const onSubmitHandler = (e) => {
-        e.preventDefault();        
-        const loginInfo = { email, password }
-        dispatch(login(loginInfo))
-        console.log(loginInfo)
+        e.preventDefault();
+        const { email, password } = loginInfo
+        const loginData = { email, password }
+        dispatch(login(loginData))
+        console.log(loginData)
         navigate('/PlayerDashboard')
         // onSubmitProp(loginInfo)
     }

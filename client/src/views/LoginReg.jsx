@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import RegisterForm from '../components/RegisterForm'
 import LoginForm from '../components/LoginForm'
 import './LoginReg.css';
-// import NavBar from '../components/NavBar'
 
 const LoginReg = (props) => {
     const [allPlayers, setAllPlayers] = useState([]);
@@ -11,7 +10,6 @@ const LoginReg = (props) => {
         
     return (
         <div>
-            {/* <NavBar/> */}
             <div className="login-reg-container">
                 <div className="background"></div>
                 <div className="content"></div>
@@ -21,7 +19,6 @@ const LoginReg = (props) => {
             <div className='d-flex mt-5'>
             </div>
             <div className='d-flex justify-content-around p-5'>
-                {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
                 <div className='col ms-5 me-5'>
                     {/* <h2 className="mx-auto">Login:</h2> */}
                     <LoginForm loginEmail="" loginPassword=""/>
