@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './UpdatePlayerForm.css';
+import '../styles/UpdatePlayerForm.css';
 import { toast } from 'react-toastify';
 
 const UpdatePlayerForm = (props) => {

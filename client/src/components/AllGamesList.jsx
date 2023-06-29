@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {useNavigate, Link} from 'react-router-dom'
 import axios from 'axios'
 import {useSelector} from 'react-redux'
-import './AllGamesList.css';
+import '../styles/AllGamesList.css';
 // import DeleteButton from './DeleteButton'
 
 const AllGamesList = (props) => {
