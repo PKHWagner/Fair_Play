@@ -85,11 +85,11 @@ const GameDayView = ({props}) => {
         <div>
             <div>
                 <PlayerNavbar player={loggedInPlayer.player}/>
-                <h1 className="mt-4 mb-3">Game Day</h1>
+                <h1 className="mt-4 mb-3 text-secondary mb-5" style={{fontFamily: "impact"}}>Game Day</h1>
                 <div>
-                    <h4 className="mb-3 text-secondary">- {game.address} {game.street} - {game.city}, {game.state} -</h4>
+                    <h5 className="mb-3 text-secondary">- {game.address} {game.street} - {game.city}, {game.state} -</h5>
                 </div>
-                <div className=" col-2 bg-light border border-dark rounded mx-auto p-3">
+                <div className=" col-2 bg-light border border-dark rounded mx-auto p-3 mt-5">
                     <h3>SET UP TIME:</h3>
                     <h3 className="mb-4">{setupTime}</h3>
                     <h3>START TIME:</h3>

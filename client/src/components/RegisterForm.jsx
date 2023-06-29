@@ -120,7 +120,7 @@ const RegisterForm = (props) => {
 return (
     <div className="register-section">
         <form className='mx-auto p-4' onSubmit={onSubmitHandler}>
-        <h1 className=''> Register: </h1>
+        <h1 className='mb-5' style={{fontFamily: "impact"}}> Register: </h1>
       <div className="form-row m-3">
         <div className="form-group col">
           <label htmlFor="firstName">First Name:</label>

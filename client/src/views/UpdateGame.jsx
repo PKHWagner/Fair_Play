@@ -45,7 +45,7 @@ const UpdateGame = (props) => {
 return (
     <div>
         <PlayerNavbar player={loggedInPlayer.player}/>
-        <h2 className="mx-auto mt-5">Update Game:</h2>
+        <h2 className="mx-auto mt-5 text-secondary" style={{fontFamily: "impact"}}>Update Game:</h2>
         <div>
         {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
         {

@@ -49,7 +49,7 @@ const LoginForm = (props) => {
     return (
         <div className="login-section-bg login-section mx-auto p-3 login-section-border login-section-border-dark login-section-rounded login-section-margin">
             <form className="login-section mx-auto p-4" onSubmit={onSubmitHandler}>
-            <h1 className='login-space'> Login:</h1>
+            <h1 className='login-space' style={{fontFamily: "impact"}}> Login:</h1>
             <div className="login-form-group m-3">
                 <label htmlFor="email" className="login-label mt-5"> Email:</label>
                 <input type="text" name="email" id="email" className="login-form-control" onChange={logChangeHandler}/>

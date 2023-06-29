@@ -37,7 +37,7 @@ const CreateGame = (props) => {
     return (
         <div>
             <PlayerNavbar player={loggedInPlayer.player} />
-            <h2 className="mx-auto mt-5">Create Pick Up Game:</h2>
+            <h2 className="mx-auto mt-5 text-secondary" style={{fontFamily: "impact"}}>Create Pick Up Game:</h2>
             <div>
                 <GameForm onSubmitProp={newGame} initialGameDate="" initialAddress="" initialCity="" initialState="" initialZipCode="" initialSetupTime="" initialKickOffTime="" />
             </div>

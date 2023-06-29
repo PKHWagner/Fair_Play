@@ -54,7 +54,7 @@ const AddGameStats = () => {
 return (
     <div>
         <PlayerNavbar player={loggedInPlayer.player}/>
-        <h2 className="mx-auto mt-5 mb-5">Game Stats:</h2>
+        <h2 className="mx-auto mt-5 mb-5 text-secondary" style={{fontFamily: "impact"}}>Game Stats:</h2>
         <div>
             {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
             <StatForm onSubmitProp={editPlayer} initialMinutes={player.minutes} initialGoals={player.goals} initialAssists={player.assists} initialYellowCards={player.yellowCards} initialRedCard={player.redCard}/>  
