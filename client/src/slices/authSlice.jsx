@@ -9,14 +9,13 @@ const initialState = {
     isSuccess: false,
     isLoading: false,
     message: '',
-    errors: {}
 }
 
 export const register = createAsyncThunk('auth/register', async (player, thunkAPI) => {
         try {
             return await authService.register(player)
         } catch (error) {
-            const errorResponse = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            const errorResponse = (error.response && error.response.data.errors);
             console.log(errorResponse);
             const errorFields = Object.keys(errorResponse);
             const errors = {};
@@ -31,18 +30,17 @@ export const logout = createAsyncThunk('auth/logout', async () => {
     await authService.logout();
 })
 
-export const login = createAsyncThunk(
-    'auth/login', 
-    async (player, thunkAPI) => {
+export const login = createAsyncThunk('auth/login', async (player, thunkAPI) => {
         try {
-            return await authService.login(player)
+            const response = await authService.login(player);
+            return response;
         } catch (error) {
-            const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-            return thunkAPI.rejectWithValue(message)
+            const errorResponse = (error.response && error.response.data.message);
+            console.log(error.response);
+            console.log(error.response.data.message);
+            return thunkAPI.rejectWithValue(errorResponse);
         }
     })
-
-
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -73,7 +71,7 @@ export const authSlice = createSlice({
 
             if (action.payload && typeof action.payload === 'object') {
                 Object.keys(action.payload).forEach((fieldName) => {
-                    state.errors[fieldName] = action.payload[fieldName].message;
+                    state.errors[fieldName] = action.payload[fieldName];
                 })
             }
         })
