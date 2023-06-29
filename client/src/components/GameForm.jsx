@@ -113,7 +113,7 @@ const GameForm = (props) => {
               <label htmlFor='kickOffTime'>Kickoff Time:</label>
               <input type="time" name="kickOffTime" id="kickOffTime" className="form-control input" value={gameData.kickOffTime} onChange={changeHandler} />
             </div>
-            <button input type="submit" className='btn btn-warning btn-submit'>Create</button>
+            <button input type="submit" className='btn btn-warning btn-submit mt-4'>Submit</button>
           </form>
         </div>
       )

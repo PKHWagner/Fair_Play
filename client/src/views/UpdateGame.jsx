@@ -49,7 +49,7 @@ return (
         <div>
         {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
         {
-        loaded && <GameForm onSubmitProp={editGame} initialDate={game.gameDate} initialAddress={game.address} initialCity={game.city} initialState={game.state}  initialZipCode={game.zipCode} initialSetupTime={game.setUpTime} initialKickOffTime={game.kickOffTime}/>
+        loaded && <GameForm onSubmitProp={editGame} initialGameDate={game.gameDate} initialAddress={game.address} initialCity={game.city} initialState={game.state}  initialZipCode={game.zipCode} initialSetupTime={game.setupTime} initialKickOffTime={game.kickOffTime}/>
         }
         </div>
     </div>

@@ -136,7 +136,7 @@ return (
                 }
             </tbody>
         </table>
-        <Link to='/CreateGame' className='btn btn-secondary'>Create New Game</Link>
+        <Link to='/CreateGame' className='btn btn-secondary mt-3'>Create New Game</Link>
     </div>
 )}
 

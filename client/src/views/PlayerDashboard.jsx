@@ -12,7 +12,7 @@ const PlayerDashboard = (props) => {
         <div>
             <PlayerNavbar player={loggedInPlayer.player}/>
             <div className="p-4">
-                <h1>Pick Up Games in Your Area</h1>
+                <h1 className="mt-4 mb-4">Pick Up Games in Your Area</h1>
                 <AllGamesList />
             </div>
         </div>

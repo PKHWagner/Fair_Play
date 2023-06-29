@@ -11,7 +11,7 @@ const LoginReg = (props) => {
                 <div className="background"></div>
                 <div className="content"></div>
             <div className="header">
-                <h1><span className="fair">FAIR</span><span className="play">PLAY</span></h1>
+                <h1 className='col-3 bg-light rounded p-3 mx-auto border border-muted '><span className="fair">FAIR</span><span className="play">PLAY</span></h1>
             </div>
             <div className='d-flex mt-5'>
             </div>

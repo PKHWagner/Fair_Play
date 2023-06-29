@@ -45,7 +45,7 @@ const UpdatePlayer = (props) => {
 return (
     <div>
         <PlayerNavbar player={loggedInPlayer.player}/>
-        <h2 className="mx-auto mt-5">Update Player:</h2>
+        <h2 className="mx-auto mt-5 mb-5">Update Player:</h2>
         <div>
         {errors.map((err, index) => <p className='text-danger' key={index}>{err}</p>)}
         {
