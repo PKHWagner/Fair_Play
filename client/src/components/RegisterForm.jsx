@@ -279,10 +279,10 @@ return (
                   <option value="4">Pro</option>
                 </select>
         <div className="tooltip">
-              <p className="tooltip-text">Beginner - Never played in a match and has little to no knowledge of the rules of the game.</p>
-              <p className="tooltip-text">Intermediate - Plays, or has played, occasionally in matches and knows most rules of the game.</p>
-              <p className="tooltip-text">Advanced - Plays in matches regularly and has in-depth knowledge of all the rules.</p>
-              <p className="tooltip-text">Pro - Plays regularly and has a history of playing professionally or played in high school and college. Has an in-depth knowledge of all the rules.</p>
+              <p className="tooltip-text mb-1">BEGINNER - Never played in a match and has little to no knowledge of the rules of the game.</p>
+              <p className="tooltip-text mb-1">INTERMEDIATE - Has played occasionally in matches and knows most rules of the game.</p>
+              <p className="tooltip-text mb-1">ADVANCED - Plays in matches regularly and has in-depth knowledge of all the rules.</p>
+              <p className="tooltip-text">PRO - Plays regularly and has a history of playing professionally or played in high school and college. Has an in-depth knowledge of all the rules.</p>
         </div>
       </div>
           {/* {
