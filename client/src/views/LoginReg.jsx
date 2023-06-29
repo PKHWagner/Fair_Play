@@ -1,12 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import RegisterForm from '../components/RegisterForm'
 import LoginForm from '../components/LoginForm'
 import './LoginReg.css';
 
 const LoginReg = (props) => {
-    const [allPlayers, setAllPlayers] = useState([]);
-    const [player, setPlayer] = useState(props);
-    const [errors, setErrors] = useState([]);
         
     return (
         <div>

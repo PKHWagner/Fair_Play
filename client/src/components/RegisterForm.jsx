@@ -64,18 +64,18 @@ const RegisterForm = (props) => {
       confirmPassword
     } = playerData;
 
-    const {player, isLoading, isError, isSuccess, message
-    } = useSelector((state) => state.auth)
+    const {player, isLoading, isSuccess, message} = useSelector((state) => state.auth)
 
     useEffect(() => {
-        if (isError) {
-            console.log(message)
-            toast.error(message)
-        }
         if (isSuccess || player) {
           navigate('/PlayerDashboard')
         }
-    }, [isError, isSuccess, message, navigate, dispatch])
+        if (errors) {
+            Object.keys(errors).forEach((key) => {
+                toast.error(errors[key])
+            })
+        }
+    }, [errors, player, isSuccess, message, navigate, dispatch])
 
     const changeHandler = (e) => {
         setPlayerData((prevState) => ({
@@ -105,15 +105,12 @@ const RegisterForm = (props) => {
 
         const response = await dispatch(register(playerData))
         console.log(response)
-        console.log(response.payload)
-        console.log(response.payload.error)
-        
-        if(response.payload && response.payload) {
-            navigate('/PlayerDashboard')
+        console.log(response.payload)        
+        if(response.payload) {
         } else if (response.payload) {
             const {errors} = response.payload;
             Object.keys(errors).forEach((key) => {
-            toast.error(errors[key])
+              toast.error(errors[key])
           })}
     }
     if (isLoading) {
@@ -128,40 +125,35 @@ return (
         <div className="form-group col">
           <label htmlFor="firstName">First Name:</label>
           <input type="text" name="firstName" id="firstName" className="form-control input-field" value={playerData.firstName} onChange={changeHandler}/>
-          {
+          {/* {
               errors.firstName ? 
               toast.error(errors && errors.firstName.message) :
               null
-          }
+          } */}
         </div>
         <div className="form-group col">
           <label htmlFor="lastName">Last Name:</label>
           <input type="text" name="lastName" id="lastName" className="form-control" value={playerData.lastName} onChange={changeHandler}/>
-          {
+          {/* {
               errors.lastName ? 
               toast.error(errors && errors.lastName.message) :
               null
-          }
+          } */}
         </div>
       </div>
       <div className="form-row m-3">
         <div className="form-group col">
           <label htmlFor="address">Address:</label>
           <input type="text" name="address" id="address" className="form-control" value={playerData.address} onChange={changeHandler}/>
-          {
+          {/* {
               errors.address ?
               toast.error(errors && errors.address.message) :
               null
-          }
+          } */}
         </div>
         <div className="form-group col">
         <label htmlFor='city'>City:</label>
         <input type="text" name="city" id="city" className="form-control" value={playerData.city} onChange = {changeHandler}/>
-          {
-              errors.city?
-              toast.errorerrors && (errors.city.message) :
-              null
-          }
         </div>
       </div>
       <div className="form-row m-3">
@@ -221,21 +213,21 @@ return (
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </select>
-          {
+          {/* {
               errors.state ? 
               toast.error(errors && errors.state.message) :
               null
-          }
+          } */}
         </div>
 
         <div className="form-group col">
           <label htmlFor="zipCode">Zip Code:</label>
           <input type="text" name="zipCode" id="zipCode" className="form-control" value={playerData.zipCode} onChange={changeHandler}/>
-          {
+          {/* {
               errors.zipCode ? 
               toast.error(errors && errors.zipCode.message) :
               null
-          }
+          } */}
         </div>
 
       </div>
@@ -250,11 +242,11 @@ return (
                 <option value="Baseball">Baseball</option>
                 <option value="Hockey">Hockey</option>
           </select>
-          {
+          {/* {
               errors.sport ? 
               toast.error(errors && errors.sport.message) :
               null
-          }
+          } */}
         </div>
         <div className="form-group col">
           <label htmlFor="position">Position:</label>
@@ -269,11 +261,11 @@ return (
                 <option value="Winger">Winger</option>
                 <option value="Striker">Striker</option>
           </select>
-          {
+          {/* {
               errors.position ? 
               toast.error(errors && errors.position.message) : 
               null
-          }
+          } */}
         </div>
       </div>
       <div className="form-row m-3">
@@ -293,40 +285,40 @@ return (
               <p className="tooltip-text">Pro - Plays regularly and has a history of playing professionally or played in high school and college. Has an in-depth knowledge of all the rules.</p>
         </div>
       </div>
-          {
+          {/* {
               errors.skillLevel ? 
               toast.error(errors && errors.skillLevel.message) :
               null
-          }
+          } */}
       </div>
         <div className="form-group col">
         <label htmlFor='email'>Email:</label>
         <input type="text" name="email" id="email" className="form-control" value={playerData.email} onChange = {changeHandler}/>
-          {
+          {/* {
               errors.email?
               toast.error(errors && errors.email.message) :
               null
-          }
+          } */}
         </div>
       </div>
       <div className="form-row m-3">
         <div className="form-group col">
         <label htmlFor='password'>Password:</label>
         <input type="password" name="password" id="password" className="form-control" value={playerData.password} onChange = {changeHandler}/>
-          {
-              errors.password?
-              toast.error(errors && errors.password.message) :
-              null
-          }
+          {/* {
+          //     errors.password?
+          //     toast.error(errors && errors.password.message) :
+          //     null
+          // } */}
         </div>
         <div className="form-group col">
         <label htmlFor='confirmPassword'>Confirm Password:</label>
         <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" value={playerData.confirmPassword} onChange = {changeHandler}/>
-          {
+          {/* {
               errors.confirmPassword?
               toast.error(errors && errors.confirmPassword.message) :
               null
-          }
+          } */}
         </div>
       </div>
       <button type="submit" className="btn btn-primary m-3 submit-button">Register

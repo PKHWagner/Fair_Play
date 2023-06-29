@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { login } from '../slices/authSlice';
-import { reset } from '../slices/authSlice';
 import './LoginForm.css';
 
 const LoginForm = (props) => {
@@ -16,38 +15,32 @@ const LoginForm = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [errors, setErrors] = useState({})
-
-    // const {email, password} = loginInfo;
-
-    const {player, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
+    const {player, isLoading, isSuccess, message} = useSelector((state) => state.auth)
 
     useEffect(() => {
-        if (isError) {
+        if (isSuccess || player) {
+            navigate('/PlayerDashboard')
+        }
+        if (message) {
             toast.error(message)
         }
-        if (isSuccess || player) {
-            toast.success(message)
-        }
-
-        dispatch (reset())
-    }, [isError, isSuccess, message, navigate, dispatch])
+    }, [player, isSuccess, message, navigate, dispatch])
 
 
     const logChangeHandler = (e) => {
         setLoginInfo((prevState) => ({
             ...prevState,
-            [e.target.name]:e.target.value}))
+            [e.target.name]:e.target.value
+        }))
+        console.log(loginInfo)
     }
 
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
         const { email, password } = loginInfo
         const loginData = { email, password }
         dispatch(login(loginData))
-        console.log(loginData)
-        navigate('/PlayerDashboard')
-        // onSubmitProp(loginInfo)
+        
     }
     if (isLoading) {
         return <h1>Loading...</h1>
@@ -60,20 +53,20 @@ const LoginForm = (props) => {
             <div className="login-form-group m-3">
                 <label htmlFor="email" className="login-label"> Email:</label>
                 <input type="text" name="email" id="email" className="login-form-control" onChange={logChangeHandler}/>
-                {
+                {/* {
                     errors.email ? (
                     <p className="login-error-message">{errors.email.message}</p>) : 
                     null
-                }
+                } */}
             </div>
             <div className="login-form-group m-3">
                 <label htmlFor="password" className="login-label">Password:</label>
                 <input type="password" name="password" id="password" className="login-form-control" onChange={logChangeHandler}/>
-                {
+                {/* {
                     errors.password ? (
                     <p className="login-error-message">{errors.password.message}</p>) : 
                     null
-                }
+                } */}
             </div>
     
             <button type="submit" className="btn btn-warning login-submit-button login-submit-button-animation">Login</button>
