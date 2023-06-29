@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './GameForm.css';
-import { toast } from 'react-toastify';
+import '../styles/GameForm.css';
 
 const GameForm = (props) => {
     const {initialGameDate, initialAddress, initialCity, initialState , initialZipCode, initialSetupTime, initialKickOffTime, onSubmitProp} = props;

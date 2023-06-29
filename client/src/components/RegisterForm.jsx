@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { register } from '../slices/authSlice';
-import './RegisterForm.css';
+import '../styles/RegisterForm.css';
 
 
 const RegisterForm = (props) => {

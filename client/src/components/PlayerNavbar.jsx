@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import { useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import {useSelector, useDispatch} from "react-redux"
-import {logout, reducer, reset} from '../slices/authSlice'
-import './PlayerNavbar.css';
+import {useDispatch} from "react-redux"
+import {logout, reset} from '../slices/authSlice'
+import '../styles/PlayerNavbar.css';
 
 const PlayerNavbar = (props) => {
     const [player, setPlayer] = useState({});

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './StatForm.css';
+import '../styles/StatForm.css';
 
 const StatForm = (props) => {
     const {initialMinutes, initialGoals, initialAssists, initialYellowCards, initialRedCard, onSubmitProp} = props;

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {useNavigate, Link} from 'react-router-dom'
 import axios from 'axios'
 import {useSelector} from 'react-redux'
-import './AllGamesList.css';
+import '../styles/AllGamesList.css';
 // import DeleteButton from './DeleteButton'
 
 const AllGamesList = (props) => {
@@ -113,7 +113,8 @@ return (
                     // const dayOfWeek = dayName[new Date(gig.date).getDay()];
                 return(
                     <tr key={game._id} className='text-start'>
-                        <td>{game.address} {game.city}, {game.state}</td>
+                        <td>{game.address}<br/>
+                        {game.city}, {game.state}</td>
                         <td>{gameDate}</td>
                         <td>{setupTime}</td>
                         <td>{kickOffTime}</td>
