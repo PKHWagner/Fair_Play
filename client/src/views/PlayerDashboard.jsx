@@ -5,6 +5,9 @@ import AllGamesList from "../components/AllGamesList";
 
 const PlayerDashboard = (props) => {
     const loggedInPlayer = useSelector((state) => state.auth.player);
+    if (!loggedInPlayer) {
+        return <div>Loading...</div>;
+    }
     return (
         <div>
             <PlayerNavbar player={loggedInPlayer.player}/>

@@ -17,6 +17,7 @@ export const register = createAsyncThunk('auth/register', async (player, thunkAP
             return await authService.register(player)
         } catch (error) {
             const errorResponse = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+            console.log(errorResponse);
             const errorFields = Object.keys(errorResponse);
             const errors = {};
             errorFields.forEach(field => {

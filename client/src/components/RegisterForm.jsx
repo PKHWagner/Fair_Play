@@ -67,15 +67,15 @@ const RegisterForm = (props) => {
     const {player, isLoading, isError, isSuccess, message
     } = useSelector((state) => state.auth)
 
-    // useEffect(() => {
-    //     if (isError) {
-    //         console.log(message)
-    //         toast.error(message)
-    //     }
-    //     if (isSuccess || player) {
-    //       navigate('/PlayerDashboard')
-    //     }
-    // }, [isError, isSuccess, message, navigate, dispatch])
+    useEffect(() => {
+        if (isError) {
+            console.log(message)
+            toast.error(message)
+        }
+        if (isSuccess || player) {
+          navigate('/PlayerDashboard')
+        }
+    }, [isError, isSuccess, message, navigate, dispatch])
 
     const changeHandler = (e) => {
         setPlayerData((prevState) => ({

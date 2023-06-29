@@ -11,7 +11,7 @@ const GameForm = (props) => {
         state: initialState,
         zipCode: initialZipCode,
         setupTime: initialSetupTime,
-        kickoffTime: initialKickOffTime
+        kickOffTime: initialKickOffTime
 
     })
 
@@ -33,12 +33,12 @@ const GameForm = (props) => {
         <div className="col-4 mx-auto m-5">
           <form className='mx-auto form' onSubmit={onSubmitHandler}>
             <div className='form-group'>
-              <label htmlFor='date'>Date:</label>
-              <input type="date" name="date" id="date" className="form-control input" value={gameData.date} onChange={changeHandler} />
+              <label htmlFor='gameDate'>Date:</label>
+              <input type="date" name="gameDate" id="gameDate" className="form-control input" value={gameData.gameDate} onChange={changeHandler} />
             </div>
             <div className='form-group'>
               <label htmlFor='address'>Address:</label>
-              <input type="text" name="saddress" id="address" className="form-control input" value={gameData.address} onChange={changeHandler} />
+              <input type="text" name="address" id="address" className="form-control input" value={gameData.address} onChange={changeHandler} />
             </div>
             <div className='form-group'>
               <label htmlFor='city'>City:</label>
@@ -47,7 +47,7 @@ const GameForm = (props) => {
             <div className='form-group'>
               <label htmlFor='state'>State:</label>
               <select name="state" id="state" className="form-control select" value={gameData.state} onChange={changeHandler}>
-                        <option value="null" selected disabled>Select State...</option>
+                        <option value=""  >Select State...</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -106,12 +106,12 @@ const GameForm = (props) => {
               <input type="text" name="zipCode" id="zipCode" className="form-control input" value={gameData.zipCode} onChange={changeHandler} />
             </div>
             <div className='form-group'>
-              <label htmlFor='setUpBy'>Set Up By:</label>
-              <input type="time" name="setUpBy" id="setUpBy" className="form-control input" value={gameData.setUpBy} onChange={changeHandler} />
+              <label htmlFor='setupTime'>Set Up Time:</label>
+              <input type="time" name="setupTime" id="setupTime" className="form-control input" value={gameData.setupTime} onChange={changeHandler} />
             </div>
             <div className='form-group'>
-              <label htmlFor='startTime'>Start Time:</label>
-              <input type="time" name="startTime" id="startTime" className="form-control input" value={gameData.startTime} onChange={changeHandler} />
+              <label htmlFor='kickOffTime'>Kickoff Time:</label>
+              <input type="time" name="kickOffTime" id="kickOffTime" className="form-control input" value={gameData.kickOffTime} onChange={changeHandler} />
             </div>
             <button input type="submit" className='btn btn-warning btn-submit'>Create</button>
           </form>
