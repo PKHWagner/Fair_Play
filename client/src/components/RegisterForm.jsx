@@ -3,163 +3,157 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { register } from '../slices/authSlice';
-import '../styles/RegisterForm.css';
+import '../styles/LoginRegisterForm.css';
 
 
 const RegisterForm = (props) => {
-    const {
-        initialFirstName,
-        initialLastName, 
-        initialAddress, 
-        initialCity, 
-        initialState, 
-        initialZipCode, 
-        initialSport, 
-        initialPosition, 
-        initialSkillLevel, 
-        initialEmail, 
-        initialPassword , 
-        initialConfirmPassword,
-        initialMinutes,
-        initialGoals,
-        initialAssists,
-        initialYellowCards,
-        initialRedCard
-    } = props;
+  const {
+    initialFirstName,
+    initialLastName,
+    initialAddress,
+    initialCity,
+    initialState,
+    initialZipCode,
+    initialSport,
+    initialPosition,
+    initialSkillLevel,
+    initialEmail,
+    initialPassword,
+    initialConfirmPassword,
+    initialMinutes,
+    initialGoals,
+    initialAssists,
+    initialYellowCards,
+    initialRedCard
+  } = props;
 
-    const [playerData, setPlayerData] = useState({
-        firstName: initialFirstName,
-        lastName: initialLastName,
-        address: initialAddress,
-        city: initialCity,
-        state: initialState,
-        zipCode: initialZipCode,
-        sport: initialSport,
-        position: initialPosition,
-        skillLevel: initialSkillLevel,
-        email: initialEmail,
-        password: initialPassword,
-        confirmPassword: initialConfirmPassword,
-        minutes: initialMinutes,
-        goals: initialGoals,
-        assists: initialAssists,
-        yellowCards: initialYellowCards,
-        redCard: initialRedCard,
-    })
+  const [playerData, setPlayerData] = useState({
+    firstName: initialFirstName,
+    lastName: initialLastName,
+    address: initialAddress,
+    city: initialCity,
+    state: initialState,
+    zipCode: initialZipCode,
+    sport: initialSport,
+    position: initialPosition,
+    skillLevel: initialSkillLevel,
+    email: initialEmail,
+    password: initialPassword,
+    confirmPassword: initialConfirmPassword,
+    minutes: initialMinutes,
+    goals: initialGoals,
+    assists: initialAssists,
+    yellowCards: initialYellowCards,
+    redCard: initialRedCard,
+  })
 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const {errors} = useSelector((state) => state.auth)
-    const {firstName,
-      lastName, 
-      address, 
-      city, 
-      state, 
-      zipCode, 
-      sport, 
-      position, 
-      skillLevel, 
-      email, 
-      password, 
-      confirmPassword
-    } = playerData;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { errors } = useSelector((state) => state.auth)
+  const { firstName,
+    lastName,
+    address,
+    city,
+    state,
+    zipCode,
+    sport,
+    position,
+    skillLevel,
+    email,
+    password,
+    confirmPassword
+  } = playerData;
 
-    const {player, isLoading, isSuccess, message} = useSelector((state) => state.auth)
+  const { player, isLoading, isSuccess, message } = useSelector((state) => state.auth)
 
-    useEffect(() => {
-        if (isSuccess || player) {
-          navigate('/PlayerDashboard')
-        }
-        if (errors) {
-            Object.keys(errors).forEach((key) => {
-                toast.error(errors[key])
-            })
-        }
-    }, [errors, player, isSuccess, message, navigate, dispatch])
-
-    const changeHandler = (e) => {
-        setPlayerData((prevState) => ({
-            ...prevState, 
-            [e.target.name]:e.target.value
-        }))
-        console.log(playerData)
+  useEffect(() => {
+    if (isSuccess || player) {
+      navigate('/PlayerDashboard')
     }
-
-    const onSubmitHandler = async (e) => {
-        e.preventDefault();
-        const playerData = { 
-          firstName, 
-          lastName, 
-          address, 
-          city, 
-          state, 
-          zipCode, 
-          sport, 
-          position, 
-          skillLevel: 
-          parseInt(skillLevel), 
-          email, 
-          password, 
-          confirmPassword
-        }
-
-        const response = await dispatch(register(playerData))
-        console.log(response)
-        console.log(response.payload)        
-        if(response.payload) {
-        } else if (response.payload) {
-            const {errors} = response.payload;
-            Object.keys(errors).forEach((key) => {
-              toast.error(errors[key])
-          })}
+    if (errors) {
+      Object.keys(errors).forEach((key) => {
+        toast.error(errors[key])
+      })
     }
-    if (isLoading) {
-        return <h1>Loading...</h1>
+  }, [errors, player, isSuccess, message, navigate, dispatch])
+
+  const changeHandler = (e) => {
+    setPlayerData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }))
+    console.log(playerData)
   }
 
-return (
-    <div className="register-section">
-        <form className='mx-auto p-4' onSubmit={onSubmitHandler}>
-        <h1 className='mb-5' style={{fontFamily: "impact"}}> Register: </h1>
-      <div className="form-row m-3">
-        <div className="form-group col">
-          <label htmlFor="firstName">First Name:</label>
-          <input type="text" name="firstName" id="firstName" className="form-control input-field" value={playerData.firstName} onChange={changeHandler}/>
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    const playerData = {
+      firstName,
+      lastName,
+      address,
+      city,
+      state,
+      zipCode,
+      sport,
+      position,
+      skillLevel:
+        parseInt(skillLevel),
+      email,
+      password,
+      confirmPassword
+    }
+
+    const response = await dispatch(register(playerData))
+    console.log(response)
+    console.log(response.payload)
+    if (response.payload) {
+    } else if (response.payload) {
+      const { errors } = response.payload;
+      Object.keys(errors).forEach((key) => {
+        toast.error(errors[key])
+      })
+    }
+  }
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
+  return (
+    <div className="form_area">
+      <div>
+        <h1 className='mb-4'> Register: </h1>
+
+        <form onSubmit={onSubmitHandler}>
+
+          {/* <label htmlFor="firstName">First Name:</label> */}
+          <input type="text" name="firstName" id="firstName" className="form-control input-field" placeholder='First Name' value={playerData.firstName} onChange={changeHandler} />
           {/* {
               errors.firstName ? 
               toast.error(errors && errors.firstName.message) :
               null
           } */}
-        </div>
-        <div className="form-group col">
-          <label htmlFor="lastName">Last Name:</label>
-          <input type="text" name="lastName" id="lastName" className="form-control" value={playerData.lastName} onChange={changeHandler}/>
+
+          {/* <label htmlFor="lastName">Last Name:</label> */}
+          <input type="text" name="lastName" id="lastName" className="form-control mt-3" placeholder='Last Name' value={playerData.lastName} onChange={changeHandler} />
           {/* {
               errors.lastName ? 
               toast.error(errors && errors.lastName.message) :
               null
           } */}
-        </div>
-      </div>
-      <div className="form-row m-3">
-        <div className="form-group col">
-          <label htmlFor="address">Address:</label>
-          <input type="text" name="address" id="address" className="form-control" value={playerData.address} onChange={changeHandler}/>
+
+          {/* <label htmlFor="address">Address:</label> */}
+          <input type="text" name="address" id="address" className="form-control mt-3" placeholder='Address' value={playerData.address} onChange={changeHandler} />
           {/* {
               errors.address ?
               toast.error(errors && errors.address.message) :
               null
           } */}
-        </div>
-        <div className="form-group col">
-        <label htmlFor='city'>City:</label>
-        <input type="text" name="city" id="city" className="form-control" value={playerData.city} onChange = {changeHandler}/>
-        </div>
-      </div>
-      <div className="form-row m-3">
-        <div className="form-group col">
-          <label htmlFor="state">State:</label>
-          <select name="state" id="state" className="form-control" value={playerData.state} onChange={changeHandler}>
+
+          {/* <label htmlFor='city'>City:</label> */}
+          <input type="text" name="city" id="city" className="form-control mt-3" placeholder='City' value={playerData.city} onChange={changeHandler} />
+
+          {/* <label htmlFor="state">State:</label> */}
+          <select name="state" id="state" className="form-control mt-3" placeholder='State' value={playerData.state} onChange={changeHandler}>
             <option value="">Select a State...</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
@@ -218,115 +212,102 @@ return (
               toast.error(errors && errors.state.message) :
               null
           } */}
-        </div>
 
-        <div className="form-group col">
-          <label htmlFor="zipCode">Zip Code:</label>
-          <input type="text" name="zipCode" id="zipCode" className="form-control" value={playerData.zipCode} onChange={changeHandler}/>
+          {/* <label htmlFor="zipCode">Zip Code:</label> */}
+          <input type="text" name="zipCode" id="zipCode" className="form-control mt-3" placeholder='Zip Code' value={playerData.zipCode} onChange={changeHandler} />
           {/* {
               errors.zipCode ? 
               toast.error(errors && errors.zipCode.message) :
               null
           } */}
-        </div>
 
-      </div>
-      <div className="form-row m-3">
-        <div className="form-group col">
-          <label htmlFor="sport">Sport:</label>
-          <select name="sport" id="sport" className="form-control" value={playerData.sport} onChange={changeHandler}>
-                <option value="">Select Sport...</option>
-                <option value="Soccer">Soccer</option>
-                <option value="Basketball">Basketball</option>
-                <option value="Football">Football</option>
-                <option value="Baseball">Baseball</option>
-                <option value="Hockey">Hockey</option>
+          {/* <label htmlFor="sport">Sport:</label> */}
+          <select name="sport" id="sport" className="form-control mt-3" placeholder='Sport' value={playerData.sport} onChange={changeHandler}>
+            <option value="">Select Sport...</option>
+            <option value="Soccer">Soccer</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Football">Football</option>
+            <option value="Baseball">Baseball</option>
+            <option value="Hockey">Hockey</option>
           </select>
           {/* {
               errors.sport ? 
               toast.error(errors && errors.sport.message) :
               null
           } */}
-        </div>
-        <div className="form-group col">
-          <label htmlFor="position">Position:</label>
-          <select name="position" id="position" className="form-control" value={playerData.position} onChange={changeHandler} >
-                <option value="">Select Position...</option>
-                <option value="Goalkeeper">Goalkeeper</option>
-                <option value="Full-back">Full-back</option>
-                <option value="Center-back">Center-back</option>
-                <option value="Defensive Midfielder">Defensive Midfielder</option>
-                <option value="Midfielder">Midfielder</option>
-                <option value="Attacking Midfielder">Attacking Midfielder</option>
-                <option value="Winger">Winger</option>
-                <option value="Striker">Striker</option>
+
+          {/* <label htmlFor="position">Position:</label> */}
+          <select name="position" id="position" className="form-control mt-3" placeholder='Position' value={playerData.position} onChange={changeHandler} >
+            <option value="">Select Position...</option>
+            <option value="Goalkeeper">Goalkeeper</option>
+            <option value="Full-back">Full-back</option>
+            <option value="Center-back">Center-back</option>
+            <option value="Defensive Midfielder">Defensive Midfielder</option>
+            <option value="Midfielder">Midfielder</option>
+            <option value="Attacking Midfielder">Attacking Midfielder</option>
+            <option value="Winger">Winger</option>
+            <option value="Striker">Striker</option>
           </select>
           {/* {
               errors.position ? 
               toast.error(errors && errors.position.message) : 
               null
           } */}
-        </div>
-      </div>
-      <div className="form-row m-3">
-          <div className="form-group col">
-          <label htmlFor="skillLevel">Skill Level:</label>
-              <div className="tooltip-container">
-                <select name="skillLevel" id="skillLevel" className="form-control" value={playerData.skillLevel} onChange={changeHandler}>
-                  <option value="1">Beginner</option>
-                  <option value="2">Intermediate</option>
-                  <option value="3">Advanced</option>
-                  <option value="4">Pro</option>
-                </select>
-        <div className="tooltip">
-              <p className="tooltip-text mb-1">BEGINNER - Never played in a match and has little to no knowledge of the rules of the game.</p>
-              <p className="tooltip-text mb-1">INTERMEDIATE - Has played occasionally in matches and knows most rules of the game.</p>
-              <p className="tooltip-text mb-1">ADVANCED - Plays in matches regularly and has in-depth knowledge of all the rules.</p>
-              <p className="tooltip-text">PRO - Plays regularly and has a history of playing professionally or played in high school and college. Has an in-depth knowledge of all the rules.</p>
-        </div>
-      </div>
+
+          {/* <label htmlFor="skillLevel">Skill Level:</label> */}
+          <div className="tooltip-container">
+            <select name="skillLevel" id="skillLevel" className="form-control mt-3" placeholder='Skill Level' value={playerData.skillLevel} onChange={changeHandler}>
+              <option value="1">Beginner</option>
+              <option value="2">Intermediate</option>
+              <option value="3">Advanced</option>
+              <option value="4">Pro</option>
+            </select>
+            <div className="tooltip">
+              <p className="tooltip-text mb-1"><strong>BEGINNER</strong> - Never played in a match and has little to no knowledge of the rules of the game.</p>
+              <p className="tooltip-text mb-1"><strong>INTERMEDIATE</strong> - Has played occasionally in matches and knows most rules of the game.</p>
+              <p className="tooltip-text mb-1"><strong>ADVANCED</strong> - Plays in matches regularly and has in-depth knowledge of all the rules.</p>
+              <p className="tooltip-text"><strong>PRO</strong> - Plays regularly and has a history of playing professionally or played in high school and college. Has an in-depth knowledge of all the rules.</p>
+            </div>
+          </div>
+
+
           {/* {
               errors.skillLevel ? 
               toast.error(errors && errors.skillLevel.message) :
               null
           } */}
-      </div>
-        <div className="form-group col">
-        <label htmlFor='email'>Email:</label>
-        <input type="text" name="email" id="email" className="form-control" value={playerData.email} onChange = {changeHandler}/>
+
+          {/* <label htmlFor='email'>Email:</label> */}
+          <input type="text" name="email" id="email" className="form-control mt-3" placeholder='Email' value={playerData.email} onChange={changeHandler} />
           {/* {
               errors.email?
               toast.error(errors && errors.email.message) :
               null
           } */}
-        </div>
-      </div>
-      <div className="form-row m-3">
-        <div className="form-group col">
-        <label htmlFor='password'>Password:</label>
-        <input type="password" name="password" id="password" className="form-control" value={playerData.password} onChange = {changeHandler}/>
+
+          {/* <label htmlFor='password'>Password:</label> */}
+          <input type="password" name="password" id="password" className="form-control mt-3" placeholder='Password' value={playerData.password} onChange={changeHandler} />
           {/* {
           //     errors.password?
           //     toast.error(errors && errors.password.message) :
           //     null
           // } */}
-        </div>
-        <div className="form-group col">
-        <label htmlFor='confirmPassword'>Confirm Password:</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" value={playerData.confirmPassword} onChange = {changeHandler}/>
+
+          {/* <label htmlFor='confirmPassword'>Confirm Password:</label> */}
+          <input type="password" name="confirmPassword" id="confirmPassword" className="form-control mt-3" placeholder='Confirm Password' value={playerData.confirmPassword} onChange={changeHandler} />
           {/* {
               errors.confirmPassword?
               toast.error(errors && errors.confirmPassword.message) :
               null
           } */}
-        </div>
+
+          <button className="buttonPink mt-4">Register
+          </button>
+        </form>
       </div>
-      <button type="submit" className="btn btn-primary mt-4 submit-button">Register
-</button>
-</form>
     </div>
   );
-  
-          
+
+
 }
 export default RegisterForm
