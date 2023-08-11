@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { login } from '../slices/authSlice';
-import '../styles/LoginForm.css';
+import '../styles/LoginRegisterForm.css';
 
 const LoginForm = (props) => {
-    const {loginEmail, loginPassword} = props;
+    const { loginEmail, loginPassword } = props;
     const [loginInfo, setLoginInfo] = useState({
         email: loginEmail,
         password: loginPassword,
@@ -15,7 +15,7 @@ const LoginForm = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const {player, isLoading, isSuccess, message} = useSelector((state) => state.auth)
+    const { player, isLoading, isSuccess, message } = useSelector((state) => state.auth)
 
     useEffect(() => {
         if (isSuccess || player) {
@@ -30,7 +30,7 @@ const LoginForm = (props) => {
     const logChangeHandler = (e) => {
         setLoginInfo((prevState) => ({
             ...prevState,
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         }))
         console.log(loginInfo)
     }
@@ -40,37 +40,39 @@ const LoginForm = (props) => {
         const { email, password } = loginInfo
         const loginData = { email, password }
         dispatch(login(loginData))
-        
+
     }
     if (isLoading) {
         return <h1>Loading...</h1>
     }
 
     return (
-        <div className="login-section-bg login-section mx-auto p-3 login-section-border login-section-border-dark login-section-rounded login-section-margin">
-            <form className="login-section mx-auto p-4" onSubmit={onSubmitHandler}>
-            <h1 className='login-space' style={{fontFamily: "impact"}}> Login:</h1>
-            <div className="login-form-group m-3">
-                <label htmlFor="email" className="login-label mt-5"> Email:</label>
-                <input type="text" name="email" id="email" className="login-form-control" onChange={logChangeHandler}/>
-                {/* {
+        <div className='form_area'>
+            <div>
+                <h1 className='mb-4'> Login:</h1>
+                <form onSubmit={onSubmitHandler}>
+
+                    <div>
+                        <input type="email" name="email" id="email" className="form-control" placeholder='Email' onChange={logChangeHandler} />
+                        {/* {
                     errors.email ? (
                     <p className="login-error-message">{errors.email.message}</p>) : 
                     null
                 } */}
-            </div>
-            <div className="login-form-group m-3">
-                <label htmlFor="password" className="login-label">Password:</label>
-                <input type="password" name="password" id="password" className="login-form-control" onChange={logChangeHandler}/>
-                {/* {
+                    </div>
+                    <div className='mt-3'>
+                        <input type="password" name="password" id="password" className="form-control" placeholder='Password' onChange={logChangeHandler} />
+                        {/* {
                     errors.password ? (
                     <p className="login-error-message">{errors.password.message}</p>) : 
                     null
                 } */}
+                    </div>
+
+                    <button className='buttonPink mt-4'>Login</button>
+                </form>
             </div>
-    
-            <button type="submit" className="btn btn-warning login-submit-button login-submit-button-animation mt-5">Login</button>
-            </form>
+
         </div>
     )
 }

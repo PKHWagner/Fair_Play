@@ -1,58 +1,40 @@
+body {
+  background-color: #30475E;
+  background-image: url('./balls-sports.png');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 25px;
+  color: #dddddd;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
 
 .header {
-    padding: 1rem;
-    text-align: center;
-    margin-top: 15px;
-  }
-  
-  .header h1 {
-    font-size: 3rem;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-          
-  .header .fair {
-    color: #2ecc71;
-  }
-  
-  .header .play {
-    color: #007bff;
+  box-shadow: 12px 12px 2px rgb(34, 40, 49, 0.50);
+  height: inherit;
+  width: 500px;
+  border-radius: 25px;
+  border: medium solid #dddddd;
+  background-color: rgb(34, 40, 49, 0.75);
+  margin-top: 15px;
 }
-  .footer {
-    background-color: white;
-    color: black;
-    padding: 1rem;
-    text-align: center;
-    margin-top: 10px;
-  }
 
-  .login-space{
-    margin-top: -35px;
-  }
+.header h1 {
+  font-size: 6rem;
+  font-weight: bold;
+}
 
-  .login-reg-container {
-    position: relative;
-    height: 100vh;
-  }
-  
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('./background_image_final.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.8;
-    z-index: -1;
-  }
-  
-  .content {
-    position: relative;
-    z-index: 1;
-  }
+.fair {
+  color: #30475E;
+}
 
-  
-  
+.play {
+  color: #ce78a7;
+}
+
+footer {
+  color: #dddddd;
+  padding: 1rem;
+  text-align: center;
+  margin-top: auto;
+}

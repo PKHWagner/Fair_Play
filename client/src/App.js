@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginReg />} />
