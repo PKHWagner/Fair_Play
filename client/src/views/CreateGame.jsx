@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 
-const CreateGame = (props) => {
+const CreateGame = () => {
     const [allGames, setAllGames] = useState([]);
     const [game, setGame] = useState({});
     const [errors, setErrors] = useState([]);

@@ -6,12 +6,10 @@ import '../styles/LoginReg.css';
 const LoginReg = (props) => {
 
     return (
-        <div>
+        <div className='body'>
             <div className='header mx-auto'>
                 <h1><span className="fair">FAIR</span><span className="play">PLAY</span></h1>
             </div>
-
-
             <div className='d-flex justify-content-around p-5'>
                 <div className='col ms-5 me-5'>
                     {/* <h2 className="mx-auto">Login:</h2> */}
