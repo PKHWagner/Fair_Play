@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import '../styles/UpdatePlayerForm.css';
+import '../styles/LoginRegisterForm.css';
 import { toast } from 'react-toastify';
 
 const UpdatePlayerForm = (props) => {
     const {
-        initialFirstName, 
-        initialLastName, 
-        initialAddress, 
-        initialCity, 
-        initialState, 
-        initialZipCode, 
-        initialSport, 
-        intialPosition, 
-        initialSkillLevel, 
-        initialEmail, 
+        initialFirstName,
+        initialLastName,
+        initialAddress,
+        initialCity,
+        initialState,
+        initialZipCode,
+        initialSport,
+        intialPosition,
+        initialSkillLevel,
+        initialEmail,
         onSubmitProp
     } = props;
 
@@ -33,7 +33,7 @@ const UpdatePlayerForm = (props) => {
     const [errors, setErrors] = useState({})
 
     const changeHandler = (e) => {
-        setPlayerData({...playerData, [e.target.name]:e.target.value})
+        setPlayerData({ ...playerData, [e.target.name]: e.target.value })
         console.log(playerData)
     }
 
@@ -43,47 +43,47 @@ const UpdatePlayerForm = (props) => {
     }
 
     return (
-        <div className="update-player-form-container">
+        <div className="form_area">
             <form className='update-player-form' onSubmit={onSubmitHandler}>
-            <div className='form-group'>
+                <div className='form-group'>
                     <label htmlFor='firstName'>First Name:</label>
-                    <input type="text" name="firstName" id="firstName" className="form-control" value={playerData.firstName} onChange = {changeHandler}/>
+                    <input type="text" name="firstName" id="firstName" className="form-control input-field" value={playerData.firstName} onChange={changeHandler} />
                     {
-                        errors.firstName?
-                        toast.error(errors.firstName.message) :
-                        null
+                        errors.firstName ?
+                            toast.error(errors.firstName.message) :
+                            null
                     }
                 </div>
                 <div className='form-group'>
                     <label htmlFor='lastName'>Last Name:</label>
-                    <input type="text" name="lastName" id="lastName" className="form-control" value={playerData.lastName} onChange = {changeHandler}/>
+                    <input type="text" name="lastName" id="lastName" className="form-control" value={playerData.lastName} onChange={changeHandler} />
                     {
-                        errors.lastName?
-                        toast.error(errors.lastName.message) :
-                        null
+                        errors.lastName ?
+                            toast.error(errors.lastName.message) :
+                            null
                     }
                 </div>
                 <div className='form-group'>
                     <label htmlFor='address'>Address:</label>
-                    <input type="text" name="address" id="address" className="form-control" value={playerData.address} onChange = {changeHandler}/>
+                    <input type="text" name="address" id="address" className="form-control" value={playerData.address} onChange={changeHandler} />
                     {
-                        errors.streetAddress?
-                        toast.error(errors.streetAddress.message) :
-                        null
+                        errors.streetAddress ?
+                            toast.error(errors.streetAddress.message) :
+                            null
                     }
                 </div>
                 <div className='form-group'>
                     <label htmlFor='city'>City:</label>
-                    <input type="text" name="city" id="city" className="form-control" value={playerData.city} onChange = {changeHandler}/>
+                    <input type="text" name="city" id="city" className="form-control" value={playerData.city} onChange={changeHandler} />
                     {
-                        errors.city?
-                        toast.error(errors.city.message):
-                        null
+                        errors.city ?
+                            toast.error(errors.city.message) :
+                            null
                     }
                 </div>
                 <div className='form-group'>
                     <label htmlFor='state'>State:</label>
-                    <select name="state" id="state" className="form-control" value={playerData.state} onChange = {changeHandler}>
+                    <select name="state" id="state" className="form-control" value={playerData.state} onChange={changeHandler}>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -137,23 +137,23 @@ const UpdatePlayerForm = (props) => {
                         <option value="WY">Wyoming</option>
                     </select>
                     {
-                        errors.state?
-                        toast.error(errors.state.message) :
-                        null
+                        errors.state ?
+                            toast.error(errors.state.message) :
+                            null
                     }
                 </div>
                 <div className='form-group'>
                     <label htmlFor='zipCode'>Zip Code:</label>
-                    <input type="text" name="zipCode" id="zipCode" className="form-control" value={playerData.zipCode} onChange = {changeHandler}/>
+                    <input type="text" name="zipCode" id="zipCode" className="form-control" value={playerData.zipCode} onChange={changeHandler} />
                     {
-                        errors.zipCode?
-                        toast.error(errors.zipCode.message) :
-                        null
+                        errors.zipCode ?
+                            toast.error(errors.zipCode.message) :
+                            null
                     }
                 </div>
                 <div className='form-group'>
                     <label htmlFor='sport'>Sport:</label>
-                    <select name="sport" id="sport" className="form-control" value={playerData.sport} onChange = {changeHandler}>
+                    <select name="sport" id="sport" className="form-control" value={playerData.sport} onChange={changeHandler}>
                         <option value="Soccer">Soccer</option>
                         <option value="Basketball">Basketball</option>
                         <option value="Football">Football</option>
@@ -161,14 +161,14 @@ const UpdatePlayerForm = (props) => {
                         <option value="Hockey">Hockey</option>
                     </select>
                     {
-                        errors.sport?
-                        toast.error(errors.sport.message) :
-                        null
+                        errors.sport ?
+                            toast.error(errors.sport.message) :
+                            null
                     }
                 </div>
                 <div className='form-group'>
                     <label htmlFor='position'>Postion:</label>
-                    <select name="position" id="position" className="form-control" value={playerData.position} onChange = {changeHandler}>
+                    <select name="position" id="position" className="form-control" value={playerData.position} onChange={changeHandler}>
                         <option value="Goalkeeper">Goalkeeper</option>
                         <option value="Full-back">Full-back</option>
                         <option value="Center-back">Center-back</option>
@@ -180,35 +180,35 @@ const UpdatePlayerForm = (props) => {
 
                     </select>
                     {
-                        errors.position?
-                        toast.error(errors.position.message) :
-                        null
+                        errors.position ?
+                            toast.error(errors.position.message) :
+                            null
                     }
                 </div>
                 <div className='form-group'>
                     <label htmlFor='skillLevel'>Skill Level:</label>
-                    <select name="skillLevel" id="skillLevel" className="form-control" value={playerData.skillLevel} onChange = {changeHandler}>
+                    <select name="skillLevel" id="skillLevel" className="form-control" value={playerData.skillLevel} onChange={changeHandler}>
                         <option value="1">Beginner</option>
                         <option value="2">Intermediate</option>
                         <option value="3">Advanced</option>
                         <option value="4">Pro</option>
                     </select>
                     {
-                        errors.skillLevel?
-                        toast.error(errors.skillLevel.message) :
-                        null
+                        errors.skillLevel ?
+                            toast.error(errors.skillLevel.message) :
+                            null
                     }
                 </div>
                 <div className='form-group'>
                     <label htmlFor='email'>Email:</label>
-                    <input type="text" name="email" id="email" className="form-control" value={playerData.email} onChange = {changeHandler}/>
+                    <input type="text" name="email" id="email" className="form-control" value={playerData.email} onChange={changeHandler} />
                     {
-                        errors.email?
-                        toast.error(errors.email.message) :
-                        null
+                        errors.email ?
+                            toast.error(errors.email.message) :
+                            null
                     }
                 </div>
-                <button input type="submit" className='update-button'>Update</button>
+                <button input type="submit" className='buttonPink'>Update</button>
             </form>
         </div>
     )
